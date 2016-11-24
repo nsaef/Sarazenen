@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<teiCorpus xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc xml:id="ZahlencodeDesWerks_TitelDesWerks">
+         <titleStmt>
+            <title type="orig" xml:lang="lat">lateinischer Titel</title>
+            <title type="alt" xml:lang="lat">Nter alternativer Titel</title>
+            <title type="trans" xml:lang="deu">Nte deutsche Übersetzung</title>
+            <author>
+               <persName n="orig">
+                  <ref target="fallsVorhandenHierLinkZuGND">lateinische Originalschreibweise des
+                     Autorennamens</ref>
+               </persName>
+               <persName n="trans">
+                  <ref target="fallsVorhandenHierLinkZuGND">deutsche Schreibweise des
+                     Autorennamens</ref>
+               </persName>
+               <date n="lifeDates" from-iso="0000-00-00" to-iso="0000-00-00"/>
+            </author>
+         </titleStmt>
+         <publicationStmt>
+            <p>TBD sobald die Rechte geklärt sind, hier Rücksprache mit K. Gahbler/ Oe. Eide
+                  halten!</p>
+         </publicationStmt>
+         <sourceDesc>
+            <!-- hier die Zitatshinweise -->
+            <!-- Beispiel #2 des MGH -->
+            <biblStruct>
+               <!-- Angabe des unselbstständigen Werkes -->
+               <analytic>
+                  <title level="a">Bonifatius, Epistolae</title>
+               </analytic>
+               <!-- Angabe des Sammelbandes, aus welchem zitiert wird -->
+               <monogr>
+                  <title level="m">MGH Epp. III</title>
+                  <!-- wofür MGH auch immer steht -->
+                  <editor>Ernst Dümmler</editor>
+                  <!-- Druck der vorliegenden Ausgabe -->
+                  <imprint>
+                     <pubPlace>Berlin</pubPlace>
+                     <date>1892</date>
+                     <biblScope unit="page" from="215" to="483">S. 215-483</biblScope>
+                  </imprint>
+               </monogr>
+            </biblStruct>
+            <!-- Beispiel #1 des Corpus Christianorum -->
+            <biblStruct>
+               <analytic>
+                  <title level="a">Liudprandi Cremonensis Antapodosis</title>
+               </analytic>
+               <monogr>
+                  <title level="m">Liudprandi Cremonensis Opera Omnia</title>
+                  <note>CCCM 156</note>
+                  <edition>Paolo Chiesa</edition>
+                  <imprint>
+                     <pubPlace>Turnhout</pubPlace>
+                     <date>1998</date>
+                     <biblScope unit="page" from="3" to="150">S. 3-150</biblScope>
+                  </imprint>
+               </monogr>
+            </biblStruct>
+            <!-- Beispiel der Patrologia Latina -->
+            <biblStruct>
+               <analytic>
+                  <title level="a">Beda Venerabilis, Super Acta Apostolorum expositio</title>
+               </analytic>
+               <monogr>
+                  <title level="m">Patrologia Latina 92</title>
+                  <editor>Jacques-Paul Migne</editor>
+                  <imprint>
+                     <pubPlace>Paris</pubPlace>
+                     <date>1862</date>
+                     <biblScope unit="column" from="937" to="996">Sp. 937-996</biblScope>
+                  </imprint>
+               </monogr>
+            </biblStruct>
+            <!-- Beispiel der Acta Sanctorum -->
+            <biblStruct>
+               <analytic>
+                  <title level="a">Vita S. Johannis</title>
+               </analytic>
+               <monogr>
+                  <title level="m">Acta Sanctorum</title>
+                  <editor>Ioannes Bollandus - Godefridus Henschenius</editor>
+                  <imprint>
+                     <pubPlace>Paris - Rom</pubPlace>
+                     <date>1658</date>
+                     <biblScope unit="volume">Februar 3</biblScope>
+                     <biblScope unit="issue">27. Feb.</biblScope>
+                     <biblScope unit="page" from="695" to="721">S. 695-721</biblScope>
+                  </imprint>
+               </monogr>
+            </biblStruct>
+            <!-- Die sonstigen Zitatsbeispiele -->
+            <biblStruct>
+               <analytic>
+                  <title level="a">Das Leben des hl. Willibald</title>
+               </analytic>
+               <monogr>
+                  <title level="m">Quellen zur Geschichte der Diözese Eichstätt</title>
+                  <title level="s">Biographien der Gründerzeit</title>
+                  <editor>Andreas Bauch</editor>
+                  <imprint>
+                     <biblScope unit="part" n="1">1.</biblScope>
+                     <pubPlace>Regensburg</pubPlace>
+                     <date>1984</date>
+                     <biblScope unit="page" from="11" to="122">S. 11-122</biblScope>
+                  </imprint>
+               </monogr>
+               <monogr>
+                  <title level="j">Eichstätter Studien</title>
+                  <title level="s">Neue Studien</title>
+                  <imprint>
+                     <biblScope unit="issue" n="19">19</biblScope>
+                  </imprint>
+               </monogr>
+            </biblStruct>
+            <biblStruct>
+               <monogr>
+                  <title level="m">La Vie de Jean, Abbé de Gorze</title>
+                  <author>Jean de Saint-Arnoul</author>
+                  <editor>Michel Parisse</editor>
+                  <imprint>
+                     <pubPlace>Paris</pubPlace>
+                     <date>1999</date>
+                  </imprint>
+               </monogr>
+            </biblStruct>
+            <biblStruct>
+               <analytic>
+                  <title level="a">Etymologiae sive Originum</title>
+                  <title level="s">Libri XX</title>
+                  <author>Isidor von Sevilla</author>
+                  <editor>Wallace M. Lindsay</editor>
+               </analytic>
+               <monogr>
+                  <title level="m">Scriptorum Classicorum Bibliotheca Oxoniensis</title>
+                  <imprint>
+                     <pubPlace>Oxford</pubPlace>
+                     <date>1911</date>
+                  </imprint>
+               </monogr>
+            </biblStruct>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   <!-- TODO #103: listPers etc. auf Quellenstellenebene -->
+   <TEI xmlns="http://www.tei-c.org/ns/1.0">
+      <!-- TODO #100: TEI: Quellenstelle => Dokument 
+      Gesamtwerk: teiCorpus -->
+      <teiHeader>
+         <fileDesc xml:id="ZahlencodeDesWerks_TitelDesWerks_ZahlencodeDerQuellenstelle">
+            <titleStmt>
+               <title>Quellenstelle ZahlencodeDerQuellenstelle</title>
+            </titleStmt>
+            <publicationStmt>
+               <p>TBD sobald die Rechte geklärt sind, hier Rücksprache mit K. Gahbler/ Oe. Eide
+                  halten!</p>
+            </publicationStmt>
+            <sourceDesc>
+               <biblStruct n="origCit">
+                  <analytic>
+                     <title level="a">Annales regni Francorum</title>
+                     <title level="s">a. 798</title>
+                  </analytic>
+                  <monogr>
+                     <title level="m">MGH SS rer. Germ.</title>
+                     <editor>Friedrich Kurze</editor>
+                     <imprint>
+                        <pubPlace>Hannover</pubPlace>
+                        <date notBefore-iso="1895-01-01" notAfter-iso="1895-12-31">1895</date>
+                        <biblScope unit="page" from="104" to="104">S. 104</biblScope>
+                        <biblScope unit="volume" n="6">[6]</biblScope>
+                     </imprint>
+                  </monogr>
+               </biblStruct>
+               <biblStruct n="transCit">
+                  <analytic>
+                     <author>Liudprand von Cremona</author>
+                     <title level="a">Das Buch der Vergeltung XY</title>
+                  </analytic>
+                  <analytic>
+                     <title level="a">
+                        Quellen zur Geschichte der sächsischen Kaiserzeit. Widukinds Sachsengeschichte. Adalberts Fortsetzung der Chronik Reginos.
+                        Liudprands Werke
+                     </title>
+                     <editor>Albert Bauer</editor>
+                     <editor>Reinhold Rau</editor>
+                  </analytic>
+                  <monogr>
+                     <title level="m">Ausgewählte Quellen zur deutschen Geschichte des Mittelalters. Freiherr von Stein-Gedächtnisausgabe</title>
+                     <imprint>
+                        <pubPlace>Darmstadt</pubPlace>
+                        <date>2002</date>
+                        <biblScope unit="volume" n="8">8</biblScope>
+                        <biblScope unit="page" from="XY" to="XY">S. XY</biblScope>
+                     </imprint>
+                  </monogr>
+               </biblStruct>
+               <msDesc>
+                  <msIdentifier>
+                     <region>Region: West- und Mitteleuropa, West- und Mitteleuropa – Westfrankenreich,
+                        West- und Mitteleuropa – Ostfrankenreich, Italien, Britische Inseln, Iberische
+                        Halbinsel, Skandinavien</region>
+                     <settlement>Abfassungsort (modern)</settlement>
+                     <idno>Zahlencode des Werks</idno>
+                  </msIdentifier>
+                  <history>
+                     <origin>
+                        <origDate type="source" notBefore-iso="0000-00-00" notAfter-iso="0000-00-00">
+                           (Quellen-)Einordnung: genaue Jahresangabe (n. Chr.), z.B. '843' oder Zeitraum, z.B. 9.-10. Jahrhundert
+                        </origDate>
+                        <origDate type="scientific" notBefore-iso="0000-00-00" notAfter-iso="0000-00-00">
+                           (wissenschaftliche) Einordnung: genaue Jahresangabe (n. Chr.), z.B. '843' oder Zeitraum, z.B. 9.-10. Jahrhundert
+                        </origDate>
+                     </origin>
+                  </history>
+               </msDesc>
+            </sourceDesc>
+         </fileDesc>
+         <profileDesc>
+            <abstract>
+               <p>
+                  Zusammenfassung
+               </p>
+               <list>
+                  <item>Auffälligkeiten</item>
+                  <item>in Stichpunkten</item>                  
+               </list>
+            </abstract>
+            <!-- zweckentfremdet; eigentlich sollen hier Informationen zur Entstehung des Textes genannt werden -->
+            <creation>
+               Anmerkungen aus der Edition
+            </creation>
+            <!-- hier die Berichte: ein <person> für jedes Individuum und eine <personGrp> für jedes Kollektivum. -->
+            <particDesc>
+               <listPerson>
+                  <person role="a"/> <!-- anderes Individuum; ersetzt aI -->
+                  <personGrp role="s"/> <!-- sarazenisches Kollektiv; ersetzt sK -->
+               </listPerson>
+            </particDesc>
+            <textClass>
+               <keywords>
+                  <term>Suchbegriff der Stelle</term>
+                  <term>Noch ein Suchbegriff</term>
+               </keywords>
+            </textClass>
+            <textDesc>
+               <channel>geschriebener Text</channel>
+               <constitution>fragmentarisch oder komplett?</constitution>
+               <derivation>original</derivation>
+               <domain>Zielgruppe(n) der Quelle</domain>
+               <factuality>fiktional: ja oder nein?</factuality>
+               <interaction>Interaktion: ja oder nein?</interaction>
+               <preparedness>spontan: ja oder nein?</preparedness>
+               <purpose>Intention des Textes</purpose>
+            </textDesc>
+         </profileDesc>
+      </teiHeader>
+      <text>
+         <body>
+            <div corresp="#ZahlencodeDerQuellenstelle">
+               <p n="fulltext" xml:lang="lat">
+                  orinigaler lateinischer Text
+               </p>
+               <p n="translation" xml:lang="de">
+                  übersetzter deutscher Text
+               </p>
+            </div>
+         </body>
+      </text>
+   </TEI>
+</teiCorpus>

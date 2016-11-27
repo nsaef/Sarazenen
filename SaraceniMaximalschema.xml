@@ -2,23 +2,33 @@
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
 	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- teiCorpus beschreibt ein komplettes Werk (Korpus von TEI-Dokumenten).
+     für jede Quellenstelle wurde ein TEI-Dokument (<TEI></TEI> begrenzt ein Dokument, i.d.R. ist das auch eine ganze Datei) angelegt, 
+     welche hier in zwischen <teiCorpus></teiCorpus> gruppiert sind. -->
 <teiCorpus xmlns="http://www.tei-c.org/ns/1.0">
    <teiHeader>
+      <!-- für eXist / XQuery allgemein: mit @xml:id der fileDesc können Werke oder Quellenstellen angesteuert werden -->
       <fileDesc xml:id="ZahlencodeDesWerks_TitelDesWerks">
          <titleStmt>
+            <!-- type=orig für original, sollte ein kanonischer Titel des Werks sein -->
             <title type="orig" xml:lang="lat">lateinischer Titel</title>
-            <title type="alt" xml:lang="lat">Nter alternativer Titel</title>
-            <title type="trans" xml:lang="deu">Nte deutsche Übersetzung</title>
+            <!-- alternative Schreibweisen können mit beliebig vielen title type="alt" beschrieben werden -->
+            <title type="alt" sameAs="alt1" xml:lang="lat">Nter alternativer Titel</title>
+            <!-- ihre entsprechende Übersetzung kann mit type="trans" geliefert werden. mit @sameAs können diese zusätzlich verknüpft werden. -->
+            <title type="trans" sameAs="alt1" xml:lang="deu">Nte deutsche Übersetzung</title>
             <author>
-               <persName n="orig">
+               <persName type="orig">
+                  <!-- GND ist Platzhalter, vorgesehen ist hier ein Link an ein zentrales Repositorium, wo alle Schreibweisen und 
+                  Übersetzungen aufgeschlüsselt sind -->
                   <ref target="fallsVorhandenHierLinkZuGND">lateinische Originalschreibweise des
                      Autorennamens</ref>
                </persName>
-               <persName n="trans">
+               <persName type="trans">
                   <ref target="fallsVorhandenHierLinkZuGND">deutsche Schreibweise des
                      Autorennamens</ref>
                </persName>
-               <date n="lifeDates" from-iso="0000-00-00" to-iso="0000-00-00"/>
+               <!-- fehlende Werte mit -00- verschlüsseln, das kann dann im Server entsprechend abgefangen werden -->
+               <date type="lifeDates" from-iso="0000-00-00" to-iso="0000-00-00"/>
             </author>
          </titleStmt>
          <publicationStmt>
@@ -26,22 +36,26 @@
                   halten!</p>
          </publicationStmt>
          <sourceDesc>
-            <!-- hier die Zitatshinweise -->
+            <!-- hier die Zitatshinweise, jedes Zitat erhält einen eigenen strukturierten bibliografischen Eintrag (dafür steht <biblStruct>) -->
             <!-- Beispiel #2 des MGH -->
             <biblStruct>
                <!-- Angabe des unselbstständigen Werkes -->
                <analytic>
+                  <!-- @level="a" steht für "analytic", vgl. TEI-Spezifikation, welche besagt, dass es sich hier um Elemente handelt,
+                  die i n n e r h a l b eines g r ö ß e r e n Werkes veröffentlicht wurden -->
                   <title level="a">Bonifatius, Epistolae</title>
                </analytic>
                <!-- Angabe des Sammelbandes, aus welchem zitiert wird -->
                <monogr>
-                  <title level="m">MGH Epp. III</title>
-                  <!-- wofür MGH auch immer steht -->
+                  <!-- @level="m" steht für "monograph" -->
+                  <title level="m">Monumenta Germainae Histroica Epp. III</title>
                   <editor>Ernst Dümmler</editor>
                   <!-- Druck der vorliegenden Ausgabe -->
                   <imprint>
                      <pubPlace>Berlin</pubPlace>
                      <date>1892</date>
+                     <!-- Angabe des Seitenbereiches, aus dem zitiert wurde -->
+                     <!-- @unit gibt die Einheit (Seiten, Bände, etc.), welche hier als Grundlage zum Zitatsumfang dient -->
                      <biblScope unit="page" from="215" to="483">S. 215-483</biblScope>
                   </imprint>
                </monogr>
@@ -54,6 +68,7 @@
                <monogr>
                   <title level="m">Liudprandi Cremonensis Opera Omnia</title>
                   <note>CCCM 156</note>
+                  <!-- CCCM müsste auch aufgeschlüssent werden -->
                   <edition>Paolo Chiesa</edition>
                   <imprint>
                      <pubPlace>Turnhout</pubPlace>
@@ -84,9 +99,13 @@
                </analytic>
                <monogr>
                   <title level="m">Acta Sanctorum</title>
-                  <editor>Ioannes Bollandus - Godefridus Henschenius</editor>
+                  <!-- auch mehrere Herausgeber sind problemlos auszuzeichnen - 
+                     im Original scheinen sie mit Hyphen voneinander getrennt zu sein -->
+                  <editor>Ioannes Bollandus</editor>
+                  <editor>Godefridus Henschenius</editor>
                   <imprint>
-                     <pubPlace>Paris - Rom</pubPlace>
+                     <pubPlace>Paris</pubPlace>
+                     <pubPlace>Rom</pubPlace>
                      <date>1658</date>
                      <biblScope unit="volume">Februar 3</biblScope>
                      <biblScope unit="issue">27. Feb.</biblScope>
@@ -100,8 +119,9 @@
                   <title level="a">Das Leben des hl. Willibald</title>
                </analytic>
                <monogr>
-                  <title level="m">Quellen zur Geschichte der Diözese Eichstätt</title>
-                  <title level="s">Biographien der Gründerzeit</title>
+                  <!-- @level="s" steht für "series" und bezeichnet den Sammeltitel -->
+                  <title level="s">Quellen zur Geschichte der Diözese Eichstätt</title>
+                  <title level="m">Biographien der Gründerzeit</title>
                   <editor>Andreas Bauch</editor>
                   <imprint>
                      <biblScope unit="part" n="1">1.</biblScope>
@@ -111,6 +131,7 @@
                   </imprint>
                </monogr>
                <monogr>
+                  <!-- @level="j" steht für "journal" und bezeichnet den Titel der Zeitschrift oder des regelmäßig erscheinenden Werkes -->
                   <title level="j">Eichstätter Studien</title>
                   <title level="s">Neue Studien</title>
                   <imprint>
@@ -147,10 +168,9 @@
          </sourceDesc>
       </fileDesc>
    </teiHeader>
-   <!-- TODO #103: listPers etc. auf Quellenstellenebene -->
+   <!-- wie oben beschrieben: jede Quellenstelle erhält ein eigenes komplettes TEI-Element.
+   Ab hier beginnen die Angaben zu den einzelnen Quellenstellen. -->
    <TEI xmlns="http://www.tei-c.org/ns/1.0">
-      <!-- TODO #100: TEI: Quellenstelle => Dokument 
-      Gesamtwerk: teiCorpus -->
       <teiHeader>
          <fileDesc xml:id="ZahlencodeDesWerks_TitelDesWerks_ZahlencodeDerQuellenstelle">
             <titleStmt>
@@ -242,12 +262,14 @@
                   <personGrp role="s"/> <!-- sarazenisches Kollektiv; ersetzt sK -->
                </listPerson>
             </particDesc>
+            <!-- hier die Suchbegriffe zur Quellenstelle -->
             <textClass>
                <keywords>
                   <term>Suchbegriff der Stelle</term>
                   <term>Noch ein Suchbegriff</term>
                </keywords>
             </textClass>
+            <!-- hier zusätzliche Informationen zum Quellmaterial selbst, hier kann auch die Interaktion angegeben werden -->
             <textDesc>
                <channel>geschriebener Text</channel>
                <constitution>fragmentarisch oder komplett?</constitution>
@@ -261,6 +283,7 @@
          </profileDesc>
       </teiHeader>
       <text>
+         <!-- ab hier der eigentliche Text -->
          <body>
             <div corresp="#ZahlencodeDerQuellenstelle">
                <p n="fulltext" xml:lang="lat">

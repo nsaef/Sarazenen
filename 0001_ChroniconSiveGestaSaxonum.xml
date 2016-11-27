@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- teiCorpus beschreibt ein komplettes Werk (Korpus von TEI-Dokumenten).
+     für jede Quellenstelle wurde ein TEI-Dokument (<TEI></TEI> begrenzt ein Dokument, i.d.R. ist das auch eine ganze Datei) angelegt, 
+     welche hier in zwischen <teiCorpus></teiCorpus> gruppiert sind. -->
+<teiCorpus xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <!-- für eXist / XQuery allgemein: mit @xml:id der fileDesc können Werke oder Quellenstellen angesteuert werden -->
+      <fileDesc xml:id="W_0001_ChroniconSiveGestaSaxonum">
+         <titleStmt>
+            <!-- type=orig für original, sollte ein kanonischer Titel des Werks sein -->
+            <title type="orig" sameAs="orig" xml:lang="lat">Chronicon sive Gesta Saxonum</title>
+            <!-- ihre entsprechende Übersetzung kann mit type="trans" geliefert werden. mit @sameAs können diese zusätzlich verknüpft werden. -->
+            <title type="trans" sameAs="orig" xml:lang="deu">Chronik</title>
+            <title type="trans" sameAs="orig" xml:lang="deu">Geschichte der Sachsen</title>
+            <author>
+               <persName type="orig">
+                  <!-- GND ist Platzhalter, vorgesehen ist hier ein Link an ein zentrales Repositorium, wo alle Schreibweisen und 
+                  Übersetzungen aufgeschlüsselt sind -->
+                  <ref target="Verasserliste.xslx">Thietmar von Merseburg</ref>
+               </persName>
+               <!-- fehlende Werte mit -00- verschlüsseln, das kann dann im Server entsprechend abgefangen werden -->
+               <date type="lifeDates" from-iso="0975-00-00" to-iso="1018-00-00"/>
+            </author>
+         </titleStmt>
+         <publicationStmt>
+            <p>TBD sobald die Rechte geklärt sind, hier Rücksprache mit K. Gahbler/ Oe. Eide
+                  halten!</p>
+         </publicationStmt>
+         <sourceDesc>
+            <!-- hier die Zitatshinweise, jedes Zitat erhält einen eigenen strukturierten bibliografischen Eintrag (dafür steht <biblStruct>) -->
+            <biblStruct>
+               <!-- Angabe des unselbstständigen Werkes -->
+               <analytic>
+                  <title level="a">Chronicon</title>
+               </analytic>
+               <!-- Angabe des Sammelbandes, aus welchem zitiert wird -->
+               <monogr>
+                  <!-- @level="m" steht für "monograph" -->
+                  <title level="m">Monumenta Germainae Historica</title>
+                  <title level="s">SS rer. Germ. N.S. 9</title>
+                  <author>Thietmar von Merseburg</author>
+                  <editor>Robert Holtzmann</editor>
+                  <!-- Druck der vorliegenden Ausgabe -->
+                  <imprint>
+                     <date>1935</date>
+                     <pubPlace>Berlin</pubPlace>
+                  </imprint>
+               </monogr>
+            </biblStruct>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   <!-- wie oben beschrieben: jede Quellenstelle erhält ein eigenes komplettes TEI-Element.
+   Ab hier beginnen die Angaben zu den einzelnen Quellenstellen. -->
+   <TEI xmlns="http://www.tei-c.org/ns/1.0">
+      <teiHeader>
+         <fileDesc xml:id="Q_0001_ChroniconSiveGestaSaxonum_0001">
+            <titleStmt>
+               <title>Quellenstelle 0001</title>
+            </titleStmt>
+            <publicationStmt>
+               <p>TBD sobald die Rechte geklärt sind, hier Rücksprache mit K. Gahbler/ Oe. Eide
+                  halten!</p>
+            </publicationStmt>
+            <sourceDesc>
+               <!-- Zitation der Originalstelle -->
+               <biblStruct type="origCit">
+                  <!-- Angabe des unselbstständigen Werkes -->
+                  <analytic>
+                     <title level="a">Chronicon</title>
+                  </analytic>
+                  <!-- Angabe des Sammelbandes, aus welchem zitiert wird -->
+                  <monogr>
+                     <!-- @level="m" steht für "monograph" -->
+                     <title level="m">Monumenta Germainae Historica</title>
+                     <title level="s">SS rer. Germ. N.S. 9</title>
+                     <author>Thietmar von Merseburg</author>
+                     <editor>Robert Holtzmann</editor>
+                     <!-- Druck der vorliegenden Ausgabe -->
+                     <imprint>
+                        <date>1935</date>
+                        <pubPlace>Berlin</pubPlace>
+                        <!-- Angabe des Seitenbereiches, aus dem zitiert wurde -->
+                        <!-- @unit gibt die Einheit (Seiten, Bände, etc.), welche hier als Grundlage zum Zitatsumfang dient -->
+                        <biblScope unit="volume" n="2">II</biblScope>
+                        <biblScope unit="chapter" n="25">25</biblScope>
+                        <biblScope unit="page" from="68" to="71">S. 68-71</biblScope>
+                     </imprint>
+                  </monogr>
+               </biblStruct>
+               <!-- Zitation der Übersetzung -->
+               <biblStruct type="transCit">
+                  <analytic>
+                     <author>Thietmar von Merseburg</author>
+                     <title level="a">
+                        Chronik II
+                     </title>
+                     <editor>Werner Trillmich</editor>
+                  </analytic>
+                  <monogr>
+                     <title level="m">Ausgewählte Quellen zur deutschen Geschichte des Mittelalters. Freiherr von Stein-Gedächtnisausgabe</title>
+                     <imprint>
+                        <pubPlace>Darmstadt</pubPlace>
+                        <date>2002</date>
+                        <!-- mit corresp gebe ich hier die Werksebene an, auf das sich die Begrenzung bezieht:
+                        @corresp="monogr" -> Sammelband
+                        @corresp="analytic" -> unselbstständiges Werk -->
+                        <biblScope corresp="analytic" unit="volume" n="2">II</biblScope>
+                        <biblScope corresp="analytic" unit="chapter" n="25">25</biblScope>
+                        <biblScope corresp="monogr" unit="issue" n="9">9</biblScope>
+                        <!-- bei ff. rechne ich zwei Seiten drauf, genaue Paginierung wäre von Nöten! -->
+                        <biblScope corresp="monogr" unit="page" from="61" to="63">S. 61ff.</biblScope>
+                     </imprint>
+                  </monogr>
+               </biblStruct>
+               <msDesc>
+                  <msIdentifier>
+                     <region>Ostfrankenreich</region>
+                     <settlement>Merseburg</settlement>
+                     <geogName>West- und Mitteleuropa</geogName>
+                     <idno>0001</idno>
+                  </msIdentifier>
+                  <history>
+                     <origin>
+                        <origDate type="source" notBefore-iso="0970-01-01" notAfter-iso="0970-12-31">
+                           970
+                        </origDate>
+                        <origDate type="scientific" notBefore-iso="0965-01-01" notAfter-iso="0969-12-31">
+                           zwischen 965 und 969
+                        </origDate>
+                     </origin>
+                  </history>
+               </msDesc>
+            </sourceDesc>
+         </fileDesc>
+         <profileDesc>
+            <abstract>
+               <p>
+                  Kurz bevor Sarazenen die Stadt Jerusalem einnehmen, stirbt Hidda, die Mutter von Erzbischof Gero von Köln während einer 
+                  Pilgerfahrt um 970 [965/69].
+               </p>
+               <list>
+                  <item>Belagerung</item>
+                  <item>Invasion</item>
+                  <item>Vorzeichen</item>                  
+               </list>
+            </abstract>
+            <!-- zweckentfremdet; eigentlich sollen hier Informationen zur Entstehung des Textes genannt werden -->
+            <creation>
+               Das Chronicon sive Gesta Saxonum, auch Chronik oder Geschichte der Sachsen genannt, wurde von Thietmar von Merseburg zwischen 
+               1012 und 1018 in acht Büchern verfasst. Thietmar, seit 1009 Bischof von Merseburg, berichtet seit Beginn des zehnten 
+               Jahrhunderts bis zu seinem Tod über die Geschichte seines Bistums.
+               Vgl. auch mit Hinweisen für weiterführende Literatur Thietmarus ep. Merseburgensis, Chronicon sive Gesta Saxonum, in: 
+               Repertorium ‚Geschichtsquellen des deutschen Mittelalters‘ [http://www.geschichtsquellen.de/repOpus_04425.html, 2016-08-01]; 
+               Gerd Althoff, Art. Thietmar v. Merseburg, in: Lexikon des Mittelalters 8, Sp. 694-695 [Brepolis Medieval Encyclopaedias – 
+               Lexikon des Mittelalters Online, http://apps.brepolis.net/lexiema/test/Default2.aspx, 2016-08-01]; David A. Warner, Art. 
+               Thietmar of Merseburg, in: Enzyclopedia of the Medieval Chronicle 2 (2010), S. 1424f.
+            </creation>
+            <!-- hier die geographischen Stichworte: -->
+            <settingDesc>
+               <listPlace>
+                  <place>
+                     <country>Israel</country>
+                  </place>
+                  <place>
+                     <settlement>Jerusalem</settlement>
+                  </place>
+               </listPlace>
+            </settingDesc>
+            <!-- hier die Berichte: ein <person> für jedes Individuum und eine <personGrp> für jedes Kollektivum. -->
+            <particDesc>
+               <listPerson>
+                  <person role="a"/> <!-- anderes Individuum; ersetzt aI -->
+                  <personGrp role="s"/> <!-- sarazenisches Kollektiv; ersetzt sK -->
+               </listPerson>
+            </particDesc>
+            <!-- hier die Suchbegriffe zur Quellenstelle -->
+            <textClass>
+               <keywords>
+                  <term>Hierosolyma</term>
+                  <term>Ierusalem</term>
+                  <term>Jerusalem</term>
+                  <term>Saracenus</term>
+                  <term>Sarazene</term>
+               </keywords>
+            </textClass>
+            <!-- hier zusätzliche Informationen zum Quellmaterial selbst, hier kann auch die Interaktion angegeben werden -->
+            <textDesc>
+               <channel>geschriebener Text</channel>
+               <constitution>komplett</constitution> <!-- nehme ich mal an, wie komplett sind die Chronica? -->
+               <derivation>original</derivation>
+               <domain>Nachwelt, zeitgenössische Leser</domain> <!-- vermute ich -->
+               <factuality>nein</factuality>
+               <interaction>nein</interaction>
+               <preparedness>ja</preparedness>
+               <purpose>Bericht über Ereignisse um Bistum Merseburg</purpose>
+            </textDesc>
+         </profileDesc>
+      </teiHeader>
+      <text>
+         <!-- ab hier der eigentliche Text -->
+         <body>
+            <div corresp="#Q_0001_ChroniconSiveGestaSaxonum_0001">
+               <p n="fulltext" xml:lang="lat">
+                  Huius [Ebf. Gero von Köln] sancta mater, Hidda nomine, Ierusalem [Jerusalem] orationis gratia petens infirmata, hanc suis 
+                  legationem pedissequis commendavit: ‘Egredienti animae meimet prolongato huius exilii incolatu, corpus meum matri terre 
+                  celeriter tradite et, mox euntes, haec filio nunciate Geroni, quo peregrinae genitrici suae talem in terris non deneget 
+                  honorem, qualem pius in caelis dare dignatus est Deus, et altare mihi in aecclesia sanctae constituat Ceciliae.’ Talibus
+                  preceptis devotae obtemperantes famule dominam suam post haec feliciter exspirantem sepelierunt et statim recendetes 
+                  miseriam insciae effugierunt subsecuturam. Nam Saraceni Ierusolimam tunc invadentes nil reliquere vicits, quod sancta eis 
+                  clam tunc predixit matron, cum se mortuam iussit propere tumulari et suas abire.
+               </p>
+               <p n="translation" xml:lang="de">
+                  Seine [Ebf. Gero von Köln] fromme Mutter Hidda war nach Jerusalem gezogen um zu beten, und dort erkrankt. Da trug sie 
+                  ihren Begleiterinnen folgende Botschaft auf: „Wenn meine Seele den Wohnort ihres langen Pilgerlebens verläßt, übergibt 
+                  meinen Leib schnell der Mutter Erde und brecht sofort mit der Nachricht zu meinem Sohne Gero auf, damit er der fernen 
+                  Mutter auf Erden nicht die Ehren verweigere, deren mich der gütige Gott im Himmel gewürdigt hat; in der Kirche der hl. 
+                  Cäcilie soll er mir einen Altar errichten.“ Diesen Anweisungen gehorsam begruben dann ihre ergebenen Dienerinnen die 
+                  selig verschiedene Herrin, kehrten sogleich heim und entrannen dadurch, ohne es zu ahnen, nahendem Unheil. Denn damals 
+                  eroberten die Sarazenen Jerusalem und ließen den Besiegten nichts; das aber hatte ihnen die heilige Frau damals verhüllt
+                  vorausgesagt, als sie befahl, sie nach ihrem Tode sofort zu bestatten und dann abzureisen.
+               </p>
+            </div>
+         </body>
+      </text>
+   </TEI>
+</teiCorpus>

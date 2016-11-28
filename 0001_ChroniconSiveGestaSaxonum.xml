@@ -406,7 +406,7 @@
                         <!-- @unit gibt die Einheit (Seiten, Bände, etc.), welche hier als Grundlage zum Zitatsumfang dient -->
                         <biblScope unit="volume" n="3">III</biblScope>
                         <biblScope unit="chapter" n="20">20</biblScope>
-                        <biblScope unit="page" from="122" to="124">S. 122</biblScope>
+                        <biblScope unit="page" from="122" to="124">S. 122ff.</biblScope>
                      </imprint>
                   </monogr>
                </biblStruct>
@@ -572,7 +572,7 @@
                         <!-- @unit gibt die Einheit (Seiten, Bände, etc.), welche hier als Grundlage zum Zitatsumfang dient -->
                         <biblScope unit="volume" n="3">III</biblScope>
                         <biblScope unit="chapter" n="21">21</biblScope>
-                        <biblScope unit="page" from="124" to="126">S. 124</biblScope>
+                        <biblScope unit="page" from="124" to="126">S. 124ff.</biblScope>
                      </imprint>
                   </monogr>
                </biblStruct>
@@ -688,6 +688,314 @@
                   unter den Schiffsleuten einen Freund, auf dessen Hilfe er rechnen konnte, stürzte sich nochmals zu Pferde ins Meer, erreichte das Schiff und wurde aufgenommen; „[…] Laßt uns nur Rossano anlaufen, wo 
                   meine Gemahlin auf meine Rückkehr wartet; wir wollen sie und alles Geld – ich habe sehr viel – aufnehmen und euren Kaiser [Basileios II.], meinen Bruder, aufsuchen; gewiß wird er mir, so hoffe ich, 
                   ein Freund in der Not sein.“
+               </p>
+            </div>
+         </body>
+      </text>
+   </TEI>
+   <TEI xmlns="http://www.tei-c.org/ns/1.0">
+      <teiHeader>
+         <fileDesc xml:id="Q_0005_ChroniconSiveGestaSaxonum_0001">
+            <titleStmt>
+               <title>Quellenstelle 0005</title>
+            </titleStmt>
+            <publicationStmt>
+               <p>TBD sobald die Rechte geklärt sind, hier Rücksprache mit K. Gahbler/ Oe. Eide
+                  halten!</p>
+            </publicationStmt>
+            <sourceDesc>
+               <!-- Zitation der Originalstelle -->
+               <biblStruct type="origCit">
+                  <!-- Angabe des unselbstständigen Werkes -->
+                  <analytic>
+                     <title level="a">Chronicon</title>
+                  </analytic>
+                  <!-- Angabe des Sammelbandes, aus welchem zitiert wird -->
+                  <monogr>
+                     <!-- @level="m" steht für "monograph" -->
+                     <title level="m">Monumenta Germainae Historica</title>
+                     <title level="s">SS rer. Germ. N.S. 9</title>
+                     <author>Thietmar von Merseburg</author>
+                     <editor>Robert Holtzmann</editor>
+                     <!-- Druck der vorliegenden Ausgabe -->
+                     <imprint>
+                        <date>1935</date>
+                        <pubPlace>Berlin</pubPlace>
+                        <!-- Angabe des Seitenbereiches, aus dem zitiert wurde -->
+                        <!-- @unit gibt die Einheit (Seiten, Bände, etc.), welche hier als Grundlage zum Zitatsumfang dient -->
+                        <biblScope unit="volume" n="3">III</biblScope>
+                        <biblScope unit="chapter" n="23">23</biblScope>
+                        <biblScope unit="page" from="126" to="128">S. 126ff.</biblScope>
+                     </imprint>
+                  </monogr>
+               </biblStruct>
+               <!-- Zitation der Übersetzung -->
+               <biblStruct type="transCit">
+                  <analytic>
+                     <author>Thietmar von Merseburg</author>
+                     <title level="a">
+                        Chronik III
+                     </title>
+                     <editor>Werner Trillmich</editor>
+                  </analytic>
+                  <monogr>
+                     <title level="m">Ausgewählte Quellen zur deutschen Geschichte des Mittelalters. Freiherr von Stein-Gedächtnisausgabe</title>
+                     <imprint>
+                        <pubPlace>Darmstadt</pubPlace>
+                        <date>2002</date>
+                        <!-- mit corresp gebe ich hier die Werksebene an, auf das sich die Begrenzung bezieht:
+                        @corresp="monogr" -> Sammelband
+                        @corresp="analytic" -> unselbstständiges Werk -->
+                        <biblScope corresp="analytic" unit="volume" n="3">III</biblScope>
+                        <biblScope corresp="analytic" unit="chapter" n="23">23</biblScope>
+                        <biblScope corresp="monogr" unit="issue" n="9">9</biblScope>
+                        <biblScope corresp="monogr" unit="page" from="111" to="113">S. 111ff.</biblScope>
+                     </imprint>
+                  </monogr>
+               </biblStruct>
+               <msDesc>
+                  <msIdentifier>
+                     <region>Ostfrankenreich</region>
+                     <settlement>Merseburg</settlement>
+                     <geogName>West- und Mitteleuropa</geogName>
+                     <idno>0005</idno>
+                  </msIdentifier>
+                  <history>
+                     <origin>
+                        <origDate type="source" notBefore-iso="0982-01-01" notAfter-iso="0982-12-31">
+                           982
+                        </origDate>
+                        <origDate type="scientific" notBefore-iso="0982-01-01" notAfter-iso="0982-12-31">
+                           982
+                        </origDate>
+                     </origin>
+                  </history>
+               </msDesc>
+            </sourceDesc>
+         </fileDesc>
+         <profileDesc>
+            <abstract>
+               <p>
+                  Kaiser Otto II. wirbt 982 byzantinische Schiffe, die „Griechisches Feuer“ an Bord tragen, zur Vernichtung der sarazenischen Flotte an.
+               </p>
+               <list>
+                  <item>Kampfhandlung</item>
+                  <item>Schutzmaßnahme</item>
+                  <item>Flotte</item>
+               </list>
+            </abstract>
+            <!-- zweckentfremdet; eigentlich sollen hier Informationen zur Entstehung des Textes genannt werden -->
+            <creation>
+               
+            </creation>
+            <!-- hier die geographischen Stichworte: -->
+            <!-- hier nicht vorliegend -->
+            <!-- hier die Berichte: ein <person> für jedes Individuum und eine <personGrp> für jedes Kollektivum. -->
+            <particDesc>
+               <listPerson>
+                  <person role="a"/>
+                  <personGrp role="a"/>
+                  <personGrp role="s"/>
+               </listPerson>
+            </particDesc>
+            <!-- hier die Suchbegriffe zur Quellenstelle -->
+            <textClass>
+               <keywords>
+                  <term>Saracenus</term>
+                  <term>Sarazene</term>
+               </keywords>
+            </textClass>
+            <!-- hier zusätzliche Informationen zum Quellmaterial selbst, hier kann auch die Interaktion angegeben werden -->
+            <textDesc>
+               <channel>geschriebener Text</channel>
+               <constitution>komplett</constitution> <!-- nehme ich mal an, wie komplett sind die Chronica? -->
+               <derivation>original</derivation>
+               <domain>Nachwelt, zeitgenössische Leser</domain> <!-- vermute ich -->
+               <factuality>nein</factuality>
+               <interaction>nein</interaction>
+               <preparedness>ja</preparedness>
+               <purpose>Bericht über Ereignisse um Bistum Merseburg</purpose>
+            </textDesc>
+         </profileDesc>
+      </teiHeader>
+      <text>
+         <!-- ab hier der eigentliche Text -->
+         <body>
+            <div corresp="#Q_0005_ChroniconSiveGestaSaxonum_0001">
+               <p n="fulltext" xml:lang="lat">
+                  Imperator [Otto II.] autem has venientes inextinguibilemque ab omni re preter acetum ferentes ignem sibi coniunxit et in mare ad comburendas Saracenorum naves conductas direxit. 
+               </p>
+               <p n="translation" xml:lang="de">
+                  Der Kaiser [Otto II.] hatte diese Schiffe, die nur durch Essig löschbares Feuer an Bord trugen, bei ihrer Ankunft in seinen Dienst genommen und auf See geschickt, um die Sarazenenflotte in Brand zu stecken.
+               </p>
+            </div>
+         </body>
+      </text>
+   </TEI>
+   <TEI xmlns="http://www.tei-c.org/ns/1.0">
+      <teiHeader>
+         <fileDesc xml:id="Q_0006_ChroniconSiveGestaSaxonum_0001">
+            <titleStmt>
+               <title>Quellenstelle 0006</title>
+            </titleStmt>
+            <publicationStmt>
+               <p>TBD sobald die Rechte geklärt sind, hier Rücksprache mit K. Gahbler/ Oe. Eide
+                  halten!</p>
+            </publicationStmt>
+            <sourceDesc>
+               <!-- Zitation der Originalstelle -->
+               <biblStruct type="origCit">
+                  <!-- Angabe des unselbstständigen Werkes -->
+                  <analytic>
+                     <title level="a">Chronicon</title>
+                  </analytic>
+                  <!-- Angabe des Sammelbandes, aus welchem zitiert wird -->
+                  <monogr>
+                     <!-- @level="m" steht für "monograph" -->
+                     <title level="m">Monumenta Germainae Historica</title>
+                     <title level="s">SS rer. Germ. N.S. 9</title>
+                     <author>Thietmar von Merseburg</author>
+                     <editor>Robert Holtzmann</editor>
+                     <!-- Druck der vorliegenden Ausgabe -->
+                     <imprint>
+                        <date>1935</date>
+                        <pubPlace>Berlin</pubPlace>
+                        <!-- Angabe des Seitenbereiches, aus dem zitiert wurde -->
+                        <!-- @unit gibt die Einheit (Seiten, Bände, etc.), welche hier als Grundlage zum Zitatsumfang dient -->
+                        <biblScope unit="volume" n="7">VII</biblScope>
+                        <biblScope unit="chapter" n="45">45</biblScope>
+                        <biblScope unit="page" from="452" to="454">S. 452ff.</biblScope>
+                     </imprint>
+                  </monogr>
+               </biblStruct>
+               <!-- Zitation der Übersetzung -->
+               <biblStruct type="transCit">
+                  <analytic>
+                     <author>Thietmar von Merseburg</author>
+                     <title level="a">
+                        Chronik III
+                     </title>
+                     <editor>Werner Trillmich</editor>
+                  </analytic>
+                  <monogr>
+                     <title level="m">Ausgewählte Quellen zur deutschen Geschichte des Mittelalters. Freiherr von Stein-Gedächtnisausgabe</title>
+                     <imprint>
+                        <pubPlace>Darmstadt</pubPlace>
+                        <date>2002</date>
+                        <!-- mit corresp gebe ich hier die Werksebene an, auf das sich die Begrenzung bezieht:
+                        @corresp="monogr" -> Sammelband
+                        @corresp="analytic" -> unselbstständiges Werk -->
+                        <biblScope corresp="analytic" unit="volume" n="3">III</biblScope>
+                        <biblScope corresp="analytic" unit="chapter" n="21">21</biblScope>
+                        <biblScope corresp="monogr" unit="issue" n="9">9</biblScope>
+                        <biblScope corresp="monogr" unit="page" from="403" to="403">S. 403.</biblScope>
+                     </imprint>
+                  </monogr>
+               </biblStruct>
+               <msDesc>
+                  <msIdentifier>
+                     <region>Ostfrankenreich</region>
+                     <settlement>Merseburg</settlement>
+                     <geogName>West- und Mitteleuropa</geogName>
+                     <idno>0006</idno>
+                  </msIdentifier>
+                  <history>
+                     <origin>
+                        <origDate type="source" notBefore-iso="1016-01-01" notAfter-iso="1016-12-31">
+                           1016
+                        </origDate>
+                        <origDate type="scientific" notBefore-iso="1016-01-01" notAfter-iso="1016-12-31">
+                           1016
+                        </origDate>
+                     </origin>
+                  </history>
+               </msDesc>
+            </sourceDesc>
+         </fileDesc>
+         <profileDesc>
+            <abstract>
+               <p>
+                  Sarazenen erobern 1016 unter Emir Mogehid ibn Abdallah die Stadt Luna in der Lombardei. Papst Benedikt VIII. stellt ihnen im Verbund mit den Seestädten Pisa und Genua ein christliches Heer entgegen, 
+                  welches erfolgreich und mit reicher Beute heimkehrt.
+               </p>
+               <list>
+                  <item>Kampfhandlung</item>
+                  <item>Bündnis</item>
+                  <item>Bedrohung</item>
+                  <item>Sieg</item>
+                  <item>Vertreibung</item>
+                  <item>Flucht</item>
+                  <item>Flotte</item>
+               </list>
+            </abstract>
+            <!-- zweckentfremdet; eigentlich sollen hier Informationen zur Entstehung des Textes genannt werden -->
+            <creation>
+               
+            </creation>
+            <!-- hier die geographischen Stichworte: -->
+            <!-- hier nicht vorliegend -->
+            <!-- hier die Berichte: ein <person> für jedes Individuum und eine <personGrp> für jedes Kollektivum. -->
+            <particDesc>
+               <listPerson>
+                  <person role="a"/>
+                  <personGrp role="a"/>
+                  <personGrp role="s"/>
+               </listPerson>
+            </particDesc>
+            <!-- hier die Suchbegriffe zur Quellenstelle -->
+            <textClass>
+               <keywords>
+                  <term>Emir</term>
+                  <term>Ibn</term>
+                  <term>Hostis</term>
+                  <term>Feind</term>
+                  <term>Saracenus</term>
+                  <term>Sarazene</term>
+               </keywords>
+            </textClass>
+            <!-- hier zusätzliche Informationen zum Quellmaterial selbst, hier kann auch die Interaktion angegeben werden -->
+            <textDesc>
+               <channel>geschriebener Text</channel>
+               <constitution>komplett</constitution> <!-- nehme ich mal an, wie komplett sind die Chronica? -->
+               <derivation>original</derivation>
+               <domain>Nachwelt, zeitgenössische Leser</domain> <!-- vermute ich -->
+               <factuality>nein</factuality>
+               <interaction>ja</interaction>
+               <preparedness>ja</preparedness>
+               <purpose>Bericht über Ereignisse um Bistum Merseburg</purpose>
+            </textDesc>
+         </profileDesc>
+      </teiHeader>
+      <text>
+         <!-- ab hier der eigentliche Text -->
+         <body>
+            <div corresp="#Q_0006_ChroniconSiveGestaSaxonum_0001">
+               <p n="fulltext" xml:lang="lat">
+                  In Longabardia [Lombardei] Saraceni navigio venientes Lunam [Luna] civitatem fugato pastore invadunt et cum potentia ac securitate fines illius regionis inhabitant et uxoribus incolarum abutuntur. 
+                  Quod cum domno apostolico nomine Benedicto fama deferret, omnes sanctae matris aecclesiae tam rectores quam defensores congregans rogat ac precipit, ut inimicos Christi talia presumentes viriliter 
+                  secum inrumperent et adiuvante Domino occiderent. Insuper ineffabilem navium multitudinem tacito premisit, quae eis redeundi possibilitatem interciperet. Hoc rex Saracenus [Emir Mogehid ibn Abdallah] 
+                  animadvertens primo indignatur et tandem paucis comitatus navicula periculum imminens evasit; sui vero omnes conveniunt et adventantes prius irruunt hostes eosque mox fugientes, miserabile dictu, 
+                  III dies et noctes prosternunt. Respexit tandem Deus gemitu piorum placatus et odientes se fugavit et in tantum devicit, ut nec uno de hiis relicto interfectorum et eorundem spoliorum multitudinem 
+                  victores numerare nequirent. Tunc regina eorum capta [ob] audaciam viri capite plectitur. Aurum capitale eiusdem, ornamentum invicem gemmatum, papa sibi pre caeteris vendicavit postque imperatori 
+                  suam transmisit partem, quae mille libris computabatur. Divisa omni preda victrix turba laeta mente ad propria revertitur et triumphanti Christo dignas persolverat odas. Rex autem predictus morte 
+                  coniugis et sociorum admodum turbatus summo pontifici saccum castaneis refertum remisit et per hunc portitorem tot se in proxima estate milites sibi esse laturos intimavit. Percepta hac legatione 
+                  papa marsuppium eundem e milio plenum internuntio talibus dictis reddidit: ‘Si non sufficiat sibi apostolicam satis laesisse dotem, secundo veniat et tot loricatos vel plus se hic inventurum pro 
+                  certo sciat.’ Homo cogitat et loquitur, Deus iudicat; quem suppliciter fidelis quisque oret, ut talem plagam misericorditer amoveat et necessariam optatae pacis securitatem pius indulgeat.
+               </p>
+               <p n="translation" xml:lang="de">
+                  In der Lombardei landeten Sarazenen und eroberten die Stadt Luna, deren Bischof entkommen konnte; dann blieben sie gewalttätig und unbehelligt dort im Lande sitzen und mißbrauchten die Frauen der 
+                  Einwohner. Als der Herr Papst Benedikt hiervon Kunde erhalten hatte, rief er alle Lenker und Schützer der hl. Mutter Kirche zusammen und bat und gebot, mit ihm zusammen mannhaft diese dreisten 
+                  Feinde Christi anzugreifen, um sie mit Hilfe des Herrn zu vernichten. Zudem sandte er heimlich eine gewaltige Flotte [aus Pisanern und Genuesen] voraus, um ihnen die Rückzugsmöglichkeit 
+                  abzuschneiden. Als der Sarazenenkönig [Emir Mogehid ibn Abdallah] davon Wind bekam, ergrimmte er zunächst, dann aber entfloh er mit wenigen Begleitern auf einem Boot der drohenden Gefahr. 
+                  Doch die Seinen sammelten sich alle, griffen die nahenden Feinde zuerst an, schlugen sie schnell in die Flucht und mordeten, es ist kläglich zu sagen, 3 Tage und Nächte lang. Schließlich 
+                  ließ sich Gott durch die Klagen der Frommen versöhnen, jagte seine Hasser auseinander und machte den Sieg so vollständig, daß nicht ein einziger von ihnen übrig blieb und die Sieger die 
+                  Menge der Erschlagenen und der Waffenbeute nicht zu zählen vermochten. Dabei wurde auch ihre Königin gefangen und wegen der Freveltaten ihres Gemahls enthauptet. Ihren goldenen, ringsum 
+                  mit Edelsteinen gezierten Kopfschmuck nahm der Papst vor den Anderen an sich und übersandte ihn später dem Kaiser als seinen Anteil, den man auf 1000 Pfund schätzte. Nach Verteilung der 
+                  Beute kehrte das siegreiche Heer froh in die Heimat zurück und sang Loblieder zu Ehren des Siegers Christus. Der durch den Tod seiner Gemahlin und seiner Gefährten aufs äußerste aufgebrachte 
+                  König aber übersandte unserem obersten Priester einen Sack voll Kastanien und ließ durch den Überbringer ankündigen, er werde ihm im nächsten Sommer ebensoviele Krieger bringen. Nach Empfang 
+                  dieser Botschaft gab der Papst dem Gesandten den gleichen Sack voll Hirse zurück mit den Worten: Wenn er von der schweren Schädigung des apostolischen Gutes noch nicht genug habe, möge er 
+                  wiederkommen; so viele und noch mehr geharnischte Krieger werde er antreffen, dessen könne er sicher sein. – Der Mensch denkt und redet, Gott entscheidet. Ihn sollte in Demut jeder Gläubige 
+                  darum bitten, daß er barmherzig solches Unheil abwende und uns in Gnade die notwendige Ruhe des lieben Friedens schenke.
                </p>
             </div>
          </body>

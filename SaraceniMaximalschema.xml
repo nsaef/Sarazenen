@@ -169,6 +169,11 @@
             </biblStruct>
          </sourceDesc>
       </fileDesc>
+      <profileDesc>
+         <creation>
+            Hier die Notizen unter "Allgemeines"
+         </creation>
+      </profileDesc>
    </teiHeader>
    <!-- wie oben beschrieben: jede Quellenstelle erhält ein eigenes komplettes TEI-Element.
    Ab hier beginnen die Angaben zu den einzelnen Quellenstellen. -->

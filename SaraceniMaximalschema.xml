@@ -7,11 +7,13 @@
      welche hier in zwischen <teiCorpus></teiCorpus> gruppiert sind. -->
 <teiCorpus xmlns="http://www.tei-c.org/ns/1.0">
    <teiHeader>
-      <!-- für eXist / XQuery allgemein: mit @xml:id der fileDesc können Werke oder Quellenstellen angesteuert werden -->
-      <fileDesc xml:id="ZahlencodeDesWerks_TitelDesWerks">
+      <!-- für eXist / XQuery allgemein: mit @xml:id der fileDesc können Werke oder Quellenstellen angesteuert werden
+      W muss davor stehen, da xml:id nicht mit Zahl beginnen darf, sondern mit NCName (non-colonized name, d.h. Buchstabe)!#
+      hier: W für work oder Werk -->
+      <fileDesc xml:id="W_ZahlencodeDesWerks_TitelDesWerks">
          <titleStmt>
             <!-- type=orig für original, sollte ein kanonischer Titel des Werks sein -->
-            <title type="orig" xml:lang="lat">lateinischer Titel</title>
+            <title type="orig" sameAs="orig" xml:lang="lat">lateinischer Titel</title>
             <!-- alternative Schreibweisen können mit beliebig vielen title type="alt" beschrieben werden -->
             <title type="alt" sameAs="alt1" xml:lang="lat">Nter alternativer Titel</title>
             <!-- ihre entsprechende Übersetzung kann mit type="trans" geliefert werden. mit @sameAs können diese zusätzlich verknüpft werden. -->
@@ -167,12 +169,18 @@
             </biblStruct>
          </sourceDesc>
       </fileDesc>
+      <profileDesc>
+         <creation>
+            Hier die Notizen unter "Allgemeines"
+         </creation>
+      </profileDesc>
    </teiHeader>
    <!-- wie oben beschrieben: jede Quellenstelle erhält ein eigenes komplettes TEI-Element.
    Ab hier beginnen die Angaben zu den einzelnen Quellenstellen. -->
    <TEI xmlns="http://www.tei-c.org/ns/1.0">
       <teiHeader>
-         <fileDesc xml:id="ZahlencodeDesWerks_TitelDesWerks_ZahlencodeDerQuellenstelle">
+         <!-- Q für Quelle, auch hier muss xml:id mit einem Buchstaben beginnen -->
+         <fileDesc xml:id="Q_ZahlencodeDerQuellenstelle_TitelDesWerks_ZahlencodeDesWerks">
             <titleStmt>
                <title>Quellenstelle ZahlencodeDerQuellenstelle</title>
             </titleStmt>
@@ -181,7 +189,8 @@
                   halten!</p>
             </publicationStmt>
             <sourceDesc>
-               <biblStruct n="origCit">
+               <!-- Zitation der Originalstelle -->
+               <biblStruct type="origCit">
                   <analytic>
                      <title level="a">Annales regni Francorum</title>
                      <title level="s">a. 798</title>
@@ -197,7 +206,8 @@
                      </imprint>
                   </monogr>
                </biblStruct>
-               <biblStruct n="transCit">
+               <!-- Zitation der Übersetzung -->
+               <biblStruct type="transCit">
                   <analytic>
                      <author>Liudprand von Cremona</author>
                      <title level="a">Das Buch der Vergeltung XY</title>
@@ -215,8 +225,11 @@
                      <imprint>
                         <pubPlace>Darmstadt</pubPlace>
                         <date>2002</date>
-                        <biblScope unit="volume" n="8">8</biblScope>
-                        <biblScope unit="page" from="XY" to="XY">S. XY</biblScope>
+                        <!-- mit corresp gebe ich hier die Werksebene an, auf das sich die Begrenzung bezieht:
+                        @corresp="monogr" -> Sammelband
+                        @corresp="analytic" -> unselbstständiges Werk -->
+                        <biblScope corresp="monogr" unit="issue" n="8">8</biblScope>
+                        <biblScope corresp="monogr" unit="page" from="XY" to="XY">S. XY</biblScope>
                      </imprint>
                   </monogr>
                </biblStruct>
@@ -277,7 +290,7 @@
                <domain>Zielgruppe(n) der Quelle</domain>
                <factuality>fiktional: ja oder nein?</factuality>
                <interaction>Interaktion: ja oder nein?</interaction>
-               <preparedness>spontan: ja oder nein?</preparedness>
+               <preparedness>vorbereitet: ja oder nein?</preparedness>
                <purpose>Intention des Textes</purpose>
             </textDesc>
          </profileDesc>

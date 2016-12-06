@@ -39,7 +39,7 @@
                <!-- Angabe des Sammelbandes, aus welchem zitiert wird -->
                <monogr>
                   <!-- @level="m" steht für "monograph" -->
-                  <title level="m">Monumenta Germainae Historica</title>
+                  <title level="m">Monumenta Germaniae Historica</title>
                   <title level="s">SS rer. Germ. N.S. 9</title>
                   <author>Thietmar von Merseburg</author>
                   <editor>Robert Holtzmann</editor>
@@ -166,18 +166,18 @@
             </creation>
             <!-- hier die geographischen Stichworte: -->
             <settingDesc>
-               <listPlace>
+               <listPlace type="keywords">
                   <place>
-                     <country>Israel</country>
+                     <placeName>Israel</placeName>
                   </place>
                   <place>
-                     <settlement>Jerusalem</settlement>
+                     <placeName>Jerusalem</placeName>
                   </place>
                </listPlace>
             </settingDesc>
             <!-- hier die Berichte: ein <person> für jedes Individuum und eine <personGrp> für jedes Kollektivum. -->
             <particDesc>
-               <listPerson>
+               <listPerson type="interaction">
                   <person role="a"/> <!-- anderes Individuum; ersetzt aI -->
                   <personGrp role="a"/> <!-- anderes Kollektiv; ersetzt aK -->
                   <personGrp role="s"/> <!-- sarazenisches Kollektiv; ersetzt sK -->
@@ -211,7 +211,7 @@
          <body>
             <div corresp="#Q_0001_ChroniconSiveGestaSaxonum_0001">
                <p n="fulltext" xml:lang="lat">
-                  Huius [Ebf. Gero von Köln] sancta mater, Hidda nomine, Ierusalem [Jerusalem] orationis gratia petens infirmata, hanc suis 
+                  Huius <rs ref="#EbfGeroVonKoeln">Ebf. Gero von Köln</rs> sancta mater, Hidda nomine, Ierusalem <rs ref="#Jerusalem">Jerusalem</rs> orationis gratia petens infirmata, hanc suis 
                   legationem pedissequis commendavit: ‘Egredienti animae meimet prolongato huius exilii incolatu, corpus meum matri terre 
                   celeriter tradite et, mox euntes, haec filio nunciate Geroni, quo peregrinae genitrici suae talem in terris non deneget 
                   honorem, qualem pius in caelis dare dignatus est Deus, et altare mihi in aecclesia sanctae constituat Ceciliae.’ Talibus
@@ -220,7 +220,7 @@
                   clam tunc predixit matron, cum se mortuam iussit propere tumulari et suas abire.
                </p>
                <p n="translation" xml:lang="de">
-                  Seine [Ebf. Gero von Köln] fromme Mutter Hidda war nach Jerusalem gezogen um zu beten, und dort erkrankt. Da trug sie 
+                  Seine <rs ref="#EbfGeroVonKoeln">Ebf. Gero von Köln</rs> fromme Mutter Hidda war nach Jerusalem gezogen um zu beten, und dort erkrankt. Da trug sie 
                   ihren Begleiterinnen folgende Botschaft auf: „Wenn meine Seele den Wohnort ihres langen Pilgerlebens verläßt, übergibt 
                   meinen Leib schnell der Mutter Erde und brecht sofort mit der Nachricht zu meinem Sohne Gero auf, damit er der fernen 
                   Mutter auf Erden nicht die Ehren verweigere, deren mich der gütige Gott im Himmel gewürdigt hat; in der Kirche der hl. 
@@ -331,7 +331,7 @@
             <!-- diese Quellenstelle hat gar keine -->
             <!-- hier die Berichte: ein <person> für jedes Individuum und eine <personGrp> für jedes Kollektivum. -->
             <particDesc>
-               <listPerson>
+               <listPerson type="interaction">
                   <person role="a"/>
                   <personGrp role="s"/>
                </listPerson>
@@ -473,21 +473,21 @@
             </creation>
             <!-- hier die geographischen Stichworte: -->
             <settingDesc>
-               <listPlace>
+               <listPlace type="keywords">
                   <place>
-                     <country>Italien</country>
+                     <placeName>Italien</placeName>
                   </place>
                   <place>
-                     <region>Kalabrien</region>
+                     <placeName>Kalabrien</placeName>
                   </place>
                   <place>
-                     <settlement>Tarent</settlement>
+                     <placeName>Tarent</placeName>
                   </place>
                </listPlace>
             </settingDesc>
             <!-- hier die Berichte: ein <person> für jedes Individuum und eine <personGrp> für jedes Kollektivum. -->
             <particDesc>
-               <listPerson>
+               <listPerson type="interaction">
                   <person role="a"/>
                   <personGrp role="a"/>
                   <personGrp role="s"/>
@@ -518,16 +518,16 @@
          <body>
             <div corresp="#Q_0003_ChroniconSiveGestaSaxonum_0001">
                <p n="fulltext" xml:lang="lat">
-                  Interim cesar Romanum [Otto II.] sic regebat inperium, ut, quod patrem suum prius respiciebat, omne detineret et Saracenis sua inpugnantibus viriliter resisteret et a finibus suis longe hos effugaret. 
-                  Calabriam [Kalabrien] a crebra Grecorum incursione et Saracenorum depredatione magnam vim per peti cesar comperiens, ad supplementum exercitus sui Bawarios ac fortes in annis Alemannos vocavit. 
-                  Ipse autem cum Ottone duce, fratris filio Liudulfi, ad urbem Tarentum [Tarent], quam Danai iam presidio munitam optinuerant, festinavit eamque viriliter in parvo tempore obpugnatam devicit. Saracenos 
+                  Interim cesar Romanum <rs ref="#Otto2">Otto II.</rs> sic regebat inperium, ut, quod patrem suum prius respiciebat, omne detineret et Saracenis sua inpugnantibus viriliter resisteret et a finibus suis longe hos effugaret. 
+                  Calabriam <rs ref="#Kalabrien">Kalabrien</rs> a crebra Grecorum incursione et Saracenorum depredatione magnam vim per peti cesar comperiens, ad supplementum exercitus sui Bawarios ac fortes in annis Alemannos vocavit. 
+                  Ipse autem cum Ottone duce, fratris filio Liudulfi, ad urbem Tarentum <rs ref="#Tarent">Tarent</rs>, quam Danai iam presidio munitam optinuerant, festinavit eamque viriliter in parvo tempore obpugnatam devicit. Saracenos 
                   quoque valido excercitu sua populantes superare contendens, cautos illo speculatores misit, qui certa de hostibus referrent. Quos primo infra urbe quadam clausos effugavit devictos, postque eosdem in 
                   campo ordinatos fortiter adiens, innumeram ex his multitudinem stravit prorsusque hos speravit esse superatos. Sed hii ex inproviso collecti ad nostros unanimiter pergunt et paululum resistentes 
                   prosternunt, pro dolor! III. Id. Iulii ... Richarium lanciferum et Udonem ducem, matris meae avunculum, comitesque Thietmarum, Becelinum, Gevehardum, Gunterium, Ecelinum eiusque fratrem Becelinum cum 
                   Burchardo et Dedi ac Conrado ceterisque ineffabilibus, quorum nomina Deus sciat.
                </p>
                <p n="translation" xml:lang="de">
-                  Währenddessen waltete der Caesar des römischen Kaisertums [Otto II.] so, daß er allen ehemaligen Besitz seines Vaters behauptete; dem Angriff der Sarazenen auf sein Gebiet trat er mannhaft entgegen und 
+                  Währenddessen waltete der Caesar des römischen Kaisertums <rs ref="#Otto2">Otto II.</rs> so, daß er allen ehemaligen Besitz seines Vaters behauptete; dem Angriff der Sarazenen auf sein Gebiet trat er mannhaft entgegen und 
                   drängte sie weit von seinem Lande zurück. Auf die Nachricht, Kalabrien leide schwer unter häufigen griechischen Einfällen und sarazenischen Plünderungen, bot er Baiern und kampfgewohnte Schwaben zur 
                   Verstärkung seines Heeres auf. Er selbst aber zog mit Herzog Otto, dem Sohne seines Bruders Liudolf, schnellstens nach der Stadt Tarent, die in den Besitz der Griechen geraten und durch eine Besatzung 
                   gesichert worden war; durch mannhaften Zugriff konnte er sie in kurzer Zeit niederkämpfen. Um nun auch mit den Sarazenen fertigzuwerden, die mit zahlreichen Truppen sein eigenes Gebiet verwüstet hatten, 
@@ -638,18 +638,15 @@
             </creation>
             <!-- hier die geographischen Stichworte: -->
             <settingDesc>
-               <listPlace>
+               <listPlace type="keywords">
                   <place>
-                     <country>Italien</country>
-                  </place>
-                  <place>
-                     <settlement>Rossano</settlement>
+                     <placeName>Italien</placeName>
                   </place>
                </listPlace>
             </settingDesc>
             <!-- hier die Berichte: ein <person> für jedes Individuum und eine <personGrp> für jedes Kollektivum. -->
             <particDesc>
-               <listPerson>
+               <listPerson type="interaction">
                   <person role="a"/>
                   <personGrp role="s"/>
                </listPerson>
@@ -679,14 +676,14 @@
          <body>
             <div corresp="#Q_0004_ChroniconSiveGestaSaxonum_0001">
                <p n="fulltext" xml:lang="lat">
-                  Cumque hostes ad ventare conspiceret [Otto II.], quid umquam fieret de se, tristis hunc interrogans et, habere se amicum apud eos, cuius auxilium speraret, animadvertens, iterum equo comite in mare pro 
-                  siliens ad alteram, que sequebatur, tendit salandriam […]. […] Eamus tantum ad urbem Rossan [Rossano], ubi mea coniunx meum prestolatur adventum, omnemque pecuniam, quam teneo ineffabile, cum eadem 
-                  sumentes, visitemus imperatorem [Basileios II.] vestrum, fratrem scilicet meum, certum, ut spero, meis necessitatibus amicum.’
+                  Cumque hostes ad ventare conspiceret <rs ref="#Otto2">Otto II.</rs>, quid umquam fieret de se, tristis hunc interrogans et, habere se amicum apud eos, cuius auxilium speraret, animadvertens, iterum equo comite in mare pro 
+                  siliens ad alteram, que sequebatur, tendit salandriam […]. […] Eamus tantum ad urbem Rossan <rs ref="#Rossano">Rossano</rs>, ubi mea coniunx meum prestolatur adventum, omnemque pecuniam, quam teneo ineffabile, cum eadem 
+                  sumentes, visitemus imperatorem <rs ref="#Basileus2">Basileios II.</rs> vestrum, fratrem scilicet meum, certum, ut spero, meis necessitatibus amicum.’
                </p>
                <p n="translation" xml:lang="de">
-                  Und als der Kaiser [Otto II.] das Nahen der Feinde bemerkte, fragte er ihn [Calonimus ben Meschullam] bekümmert, was nun aus ihm werden solle; dann aber sah er eine zweite Salandria folgen und bemerkte 
-                  unter den Schiffsleuten einen Freund, auf dessen Hilfe er rechnen konnte, stürzte sich nochmals zu Pferde ins Meer, erreichte das Schiff und wurde aufgenommen; „[…] Laßt uns nur Rossano anlaufen, wo 
-                  meine Gemahlin auf meine Rückkehr wartet; wir wollen sie und alles Geld – ich habe sehr viel – aufnehmen und euren Kaiser [Basileios II.], meinen Bruder, aufsuchen; gewiß wird er mir, so hoffe ich, 
+                  Und als der Kaiser <rs ref="#Otto2">Otto II.</rs> das Nahen der Feinde bemerkte, fragte er ihn <rs ref="#Calonimus">Calonimus ben Meschullam</rs> bekümmert, was nun aus ihm werden solle; dann aber sah er eine zweite Salandria folgen und bemerkte 
+                  unter den Schiffsleuten einen Freund, auf dessen Hilfe er rechnen konnte, stürzte sich nochmals zu Pferde ins Meer, erreichte das Schiff und wurde aufgenommen; „[…] Laßt uns nur <rs ref="#Rossano">Rossano</rs> anlaufen, wo 
+                  meine Gemahlin auf meine Rückkehr wartet; wir wollen sie und alles Geld – ich habe sehr viel – aufnehmen und euren Kaiser <rs ref="#Basileos2">Basileios II.</rs>, meinen Bruder, aufsuchen; gewiß wird er mir, so hoffe ich, 
                   ein Freund in der Not sein.“
                </p>
             </div>
@@ -792,7 +789,7 @@
             <!-- hier nicht vorliegend -->
             <!-- hier die Berichte: ein <person> für jedes Individuum und eine <personGrp> für jedes Kollektivum. -->
             <particDesc>
-               <listPerson>
+               <listPerson type="interaction">
                   <person role="a"/>
                   <personGrp role="a"/>
                   <personGrp role="s"/>
@@ -823,10 +820,10 @@
          <body>
             <div corresp="#Q_0005_ChroniconSiveGestaSaxonum_0001">
                <p n="fulltext" xml:lang="lat">
-                  Imperator [Otto II.] autem has venientes inextinguibilemque ab omni re preter acetum ferentes ignem sibi coniunxit et in mare ad comburendas Saracenorum naves conductas direxit. 
+                  Imperator <rs ref="#Otto2">Otto II.</rs> autem has venientes inextinguibilemque ab omni re preter acetum ferentes ignem sibi coniunxit et in mare ad comburendas Saracenorum naves conductas direxit. 
                </p>
                <p n="translation" xml:lang="de">
-                  Der Kaiser [Otto II.] hatte diese Schiffe, die nur durch Essig löschbares Feuer an Bord trugen, bei ihrer Ankunft in seinen Dienst genommen und auf See geschickt, um die Sarazenenflotte in Brand zu stecken.
+                  Der Kaiser <rs ref="#Otto2">Otto II.</rs> hatte diese Schiffe, die nur durch Essig löschbares Feuer an Bord trugen, bei ihrer Ankunft in seinen Dienst genommen und auf See geschickt, um die Sarazenenflotte in Brand zu stecken.
                </p>
             </div>
          </body>
@@ -936,7 +933,7 @@
             <!-- hier nicht vorliegend -->
             <!-- hier die Berichte: ein <person> für jedes Individuum und eine <personGrp> für jedes Kollektivum. -->
             <particDesc>
-               <listPerson>
+               <listPerson type="interaction">
                   <person role="a"/>
                   <personGrp role="a"/>
                   <personGrp role="s"/>
@@ -971,9 +968,9 @@
          <body>
             <div corresp="#Q_0006_ChroniconSiveGestaSaxonum_0001">
                <p n="fulltext" xml:lang="lat">
-                  In Longabardia [Lombardei] Saraceni navigio venientes Lunam [Luna] civitatem fugato pastore invadunt et cum potentia ac securitate fines illius regionis inhabitant et uxoribus incolarum abutuntur. 
+                  In Longabardia <rs ref="#Lombardei">Lombardei</rs> Saraceni navigio venientes Lunam <rs ref="#Luna">Luna</rs> civitatem fugato pastore invadunt et cum potentia ac securitate fines illius regionis inhabitant et uxoribus incolarum abutuntur. 
                   Quod cum domno apostolico nomine Benedicto fama deferret, omnes sanctae matris aecclesiae tam rectores quam defensores congregans rogat ac precipit, ut inimicos Christi talia presumentes viriliter 
-                  secum inrumperent et adiuvante Domino occiderent. Insuper ineffabilem navium multitudinem tacito premisit, quae eis redeundi possibilitatem interciperet. Hoc rex Saracenus [Emir Mogehid ibn Abdallah] 
+                  secum inrumperent et adiuvante Domino occiderent. Insuper ineffabilem navium multitudinem tacito premisit, quae eis redeundi possibilitatem interciperet. Hoc rex Saracenus <rs ref="#EmirMogehidIbnAbdallah">Emir Mogehid ibn Abdallah</rs> 
                   animadvertens primo indignatur et tandem paucis comitatus navicula periculum imminens evasit; sui vero omnes conveniunt et adventantes prius irruunt hostes eosque mox fugientes, miserabile dictu, 
                   III dies et noctes prosternunt. Respexit tandem Deus gemitu piorum placatus et odientes se fugavit et in tantum devicit, ut nec uno de hiis relicto interfectorum et eorundem spoliorum multitudinem 
                   victores numerare nequirent. Tunc regina eorum capta [ob] audaciam viri capite plectitur. Aurum capitale eiusdem, ornamentum invicem gemmatum, papa sibi pre caeteris vendicavit postque imperatori 
@@ -985,8 +982,8 @@
                <p n="translation" xml:lang="de">
                   In der Lombardei landeten Sarazenen und eroberten die Stadt Luna, deren Bischof entkommen konnte; dann blieben sie gewalttätig und unbehelligt dort im Lande sitzen und mißbrauchten die Frauen der 
                   Einwohner. Als der Herr Papst Benedikt hiervon Kunde erhalten hatte, rief er alle Lenker und Schützer der hl. Mutter Kirche zusammen und bat und gebot, mit ihm zusammen mannhaft diese dreisten 
-                  Feinde Christi anzugreifen, um sie mit Hilfe des Herrn zu vernichten. Zudem sandte er heimlich eine gewaltige Flotte [aus Pisanern und Genuesen] voraus, um ihnen die Rückzugsmöglichkeit 
-                  abzuschneiden. Als der Sarazenenkönig [Emir Mogehid ibn Abdallah] davon Wind bekam, ergrimmte er zunächst, dann aber entfloh er mit wenigen Begleitern auf einem Boot der drohenden Gefahr. 
+                  Feinde Christi anzugreifen, um sie mit Hilfe des Herrn zu vernichten. Zudem sandte er heimlich eine gewaltige Flotte aus Pisanern und Genuesen voraus, um ihnen die Rückzugsmöglichkeit 
+                  abzuschneiden. Als der Sarazenenkönig <rs ref="#EmirMogehidIbnAbdallah">Emir Mogehid ibn Abdallah</rs> davon Wind bekam, ergrimmte er zunächst, dann aber entfloh er mit wenigen Begleitern auf einem Boot der drohenden Gefahr. 
                   Doch die Seinen sammelten sich alle, griffen die nahenden Feinde zuerst an, schlugen sie schnell in die Flucht und mordeten, es ist kläglich zu sagen, 3 Tage und Nächte lang. Schließlich 
                   ließ sich Gott durch die Klagen der Frommen versöhnen, jagte seine Hasser auseinander und machte den Sieg so vollständig, daß nicht ein einziger von ihnen übrig blieb und die Sieger die 
                   Menge der Erschlagenen und der Waffenbeute nicht zu zählen vermochten. Dabei wurde auch ihre Königin gefangen und wegen der Freveltaten ihres Gemahls enthauptet. Ihren goldenen, ringsum 

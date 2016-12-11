@@ -33,6 +33,14 @@ namespace CommandLine
             //// List of parsed documents where some sort of parsing exception occured
             List<ParsedDocument> problematicDocs = parsedDocuments.Where(x => x.ParsingExceptions.Count > 0).ToList();
 
+            // add the parsed documents to an object that acts as root element
+            DocumentCollection collection = new DocumentCollection();
+            collection.Documents = parsedDocuments;
+
+            // serialize to XML
+            XmlWriter xml = new XmlWriter();
+            xml.writeXml(collection);
+
             // ParsedDocument document = Parser.ParseDocument(@"E:\Projekte\Sarazenenprojekt (Bonn)\Quellen\0001-Thietmar von Merseburg_Chronicon sive Gesta Saxonum_bearb..docx");
             // TODO: post-processing, e.g. manually replace custom markup (locations, names, etc) with TEI-Elements in the strings of the document object
             // TODO: write TEI-XML file

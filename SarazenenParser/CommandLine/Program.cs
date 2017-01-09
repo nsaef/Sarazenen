@@ -14,12 +14,10 @@ namespace CommandLine
     {
         static void Main(string[] args)
         {
-            // TODO: Handle single document and folder batch processing
-            // TODO: Move code below to method that handles a single document
-            // TODO: Filepath given by args
-
             List<ParsedDocument> parsedDocuments;
 
+            // The first argument is the path. Depending on its properties all docx-files in a directory or a single file will be parsed.
+            // Even in the case of a single document the result will be a List of parsed documents (in that case with a single entry).
             if (File.GetAttributes(args[0]).HasFlag(FileAttributes.Directory))
             {
                 parsedDocuments = ParseDocumentsInFolder(args[0], "*.docx");
@@ -29,13 +27,35 @@ namespace CommandLine
                 parsedDocuments = new List<ParsedDocument>();
                 parsedDocuments.Add(ParseDocument(args[0]));
             }
-            
-            //// List of parsed documents where some sort of parsing exception occured
-            List<ParsedDocument> problematicDocs = parsedDocuments.Where(x => x.ParsingExceptions.Count > 0).ToList();
 
-            // ParsedDocument document = Parser.ParseDocument(@"E:\Projekte\Sarazenenprojekt (Bonn)\Quellen\0001-Thietmar von Merseburg_Chronicon sive Gesta Saxonum_bearb..docx");
+
+            // The code below collects some analysis and debugging info. ********************************************** //
+            List<string> filePaths = parsedDocuments.Select(x => x.DebugInfo.FilePath).ToList();
+
+                
+                
+            List<ParsedDocument> problematicDocs =
+                parsedDocuments.Where(x => x.DebugInfo.ParsingExceptions.Count > 0).ToList();
+
+               
+                
+            List<string> nullOrEmptyProperties =
+                parsedDocuments.Select(x => x.ReportNullOrEmptyProperties()).ToList();
+
+            string completeNullOrEmptyProperties = nullOrEmptyProperties.Aggregate("\n",
+                                                                                    (current, nullOrEmptyProperty) =>
+                                                                                    current + nullOrEmptyProperty);
+
+
+            List<ParsedDocument> documentsWhereTheEndMightHaveBeenTruncated =
+                parsedDocuments.Where(x => (x.DebugInfo.LastParagraphReached - x.DebugInfo.ParagraphCount < 0)).
+                    ToList();
+            // ******************************************************************************************************** //
+
+
             // TODO: post-processing, e.g. manually replace custom markup (locations, names, etc) with TEI-Elements in the strings of the document object
             // TODO: write TEI-XML file
+        
         }
 
         /// <summary>

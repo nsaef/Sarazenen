@@ -17,16 +17,16 @@ namespace CommandLine
         /// </summary>
         public static readonly string[] GeneralInfoHeadlines =
             {
-                "Werk:",
-                "Werktitel:",
-                "Werktitel – alternative Schreibweisen:",
-                "Verfasser:",
-                "Lebensdaten des Verfassers:",
-                "Abfassungszeitraum:",
-                "Abfassungsort:",
-                "Region:",
-                "Editionshinweise:",
-                "Allgemeines:"
+                "Werk",
+                "Werktitel",
+                "Werktitel – alternative Schreibweisen",
+                "Verfasser",
+                "Lebensdaten des Verfassers",
+                "Abfassungszeitraum",
+                "Abfassungsort",
+                "Region",
+                "Editionshinweise",
+                "Allgemeines"
             };
 
         /// <summary>
@@ -35,7 +35,20 @@ namespace CommandLine
         /// </summary>
         public static readonly string[] SourceHeadlines =
             {
-                // TODO: Add strings
+                "Quellenstelle",
+                "Zitation",
+                "zeitliche (Quellen-)Angabe",
+                "Inhaltsangabe",
+                "Volltext",
+                "Übersetzung",
+                "Hinweise zur Übersetzung (Zitation)",
+                "zeitliche (wissenschaftliche) Einordnung",
+                "geographisches Stichwort",
+                "Bericht über ein/mehrere Individuum/en oder Kollektive",
+                "Interaktion (j/n)",
+                "Auffälligkeiten",
+                "Suchbegriffe der Stelle (mit Semikolon trennen)",
+                "Anmerkungen"
             };
 
 

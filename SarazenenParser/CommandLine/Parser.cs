@@ -36,19 +36,28 @@ namespace CommandLine
 
                         int currentParagraphCount = 1;
                         int totalParagraphCount = document.Paragraphs.Count;
+                        parsedDocument.DebugInfo.ParagraphCount = totalParagraphCount;
 
                         // The parsing is split into subfunctions to increase code readability
+                        parsedDocument.DebugInfo.FilePath = filePath;
                         ParseGeneralInfo(ref document, ref parsedDocument, ref currentParagraphCount, totalParagraphCount);
-                        // TODO: Add parsing of individual sources
-
-
+                        while (currentParagraphCount < totalParagraphCount)
+                        {
+                            ParseSingleSource(ref document, ref parsedDocument, ref currentParagraphCount, totalParagraphCount);
+                            if (string.IsNullOrEmpty(parsedDocument.Sources.Last().IDString))
+                            {
+                                parsedDocument.Sources.Remove(parsedDocument.Sources.Last());
+                                break;
+                            }
+                        }
+                        parsedDocument.DebugInfo.LastParagraphReached = currentParagraphCount;
 
                         // TODO: Close app?
 
                     }
                     catch (Exception e)
                     {
-                        parsedDocument.ParsingExceptions.Add(e.Message);
+                        parsedDocument.DebugInfo.ParsingExceptions.Add(e.Message);
                     }
                     finally
                     {
@@ -76,6 +85,15 @@ namespace CommandLine
             return parsedDocument;
         }
 
+
+        /// <summary>
+        /// Parse the general info (everything not regarding the data for a singular source) of a document
+        /// </summary>
+        /// <param name="document">The document to parse.</param>
+        /// <param name="parsedDocument">The object in which the parsed data is accumulated.</param>
+        /// <param name="currentParagraphCount">The current parsing position. The document is parsed by paragraphs.</param>
+        /// <param name="totalParagraphCount">The total number of paragraphs in the document.</param>
+        /// <returns></returns>
         private static void ParseGeneralInfo(ref Document document, ref ParsedDocument parsedDocument,
                                              ref int currentParagraphCount, int totalParagraphCount)
         {
@@ -100,15 +118,14 @@ namespace CommandLine
                     throw new Exception("Error while parsing document ");
                 }
 
-                string paragraphStyle = (string) currentParagraph.get_Style().NameLocal;
+                //string paragraphStyle = (string) currentParagraph.get_Style().NameLocal;
                 string paragraphText = document.Content.Paragraphs[i].Range.Text;
-
-
-
-                // paragraphStyle is used to distinguish between headlines (categories) and text bodies (content)
+                
+                // Used to distinguish between headlines and text bodies
+                int bold = currentParagraph.Range.Bold;
 
                 // Current paragraph is a headline
-                if (ParsingInfo.HeadlineParagraphStyles.Any(x => x == paragraphStyle))
+                if (bold == -1)
                 {
                     currentHeadlineCount++;
                     if (currentHeadlineCount >= ParsingInfo.GeneralInfoHeadlines.Count())
@@ -117,10 +134,9 @@ namespace CommandLine
                     }
                     currentHeadlineMatchesExpectations = false;
 
-                    // TODO: Recoverable error handling via currentHeadlineMatchesExpectations(?)
                     if (!paragraphText.StartsWith(ParsingInfo.GeneralInfoHeadlines[currentHeadlineCount]))
                     {
-                        parsedDocument.ParsingExceptions.Add("Unexpected start of headline encountered! Found headline: '" +
+                        parsedDocument.DebugInfo.ParsingExceptions.Add("Unexpected start of headline encountered! Found headline: '" +
                                             paragraphText +
                                             "', expected start: '" +
                                             ParsingInfo.GeneralInfoHeadlines[currentHeadlineCount] +
@@ -131,7 +147,7 @@ namespace CommandLine
                     // The first headline actually contains content so we need to handle it here
                     else if (currentHeadlineCount == 0)
                     {
-                        parsedDocument.IDstring = paragraphText.Substring(paragraphText.LastIndexOf('[')).Trim();
+                        parsedDocument.IDString = paragraphText.Substring(paragraphText.LastIndexOf('[')).Trim();
                     }
 
 
@@ -142,7 +158,7 @@ namespace CommandLine
                 }
 
                 // Current paragraph is a text body
-                else if (ParsingInfo.TextBodyParagraphStyles.Any(x => x == paragraphStyle))
+                else if (bold == 0)
                 {
                     if (!currentHeadlineMatchesExpectations)
                     {
@@ -153,7 +169,7 @@ namespace CommandLine
                     switch (currentHeadlineCount)
                     {
                         case 1: // "Werktitel:"
-                            parsedDocument.Title = AppendConditionally(parsedDocument.Title, paragraphText);
+                            parsedDocument.Title = AppendParagraph(parsedDocument.Title, paragraphText);
                             break;
 
                         case 2: // "Werktitel – alternative Schreibweisen:"
@@ -165,15 +181,15 @@ namespace CommandLine
                             break;
 
                         case 4: // "Lebensdaten des Verfassers:"
-                            parsedDocument.AuthorLifespan = AppendConditionally(parsedDocument.AuthorLifespan, paragraphText);
+                            parsedDocument.AuthorLifespan = AppendParagraph(parsedDocument.AuthorLifespan, paragraphText);
                             break;
 
                         case 5: // "Abfassungszeitraum:"
-                            parsedDocument.TimePeriod = AppendConditionally(parsedDocument.TimePeriod, paragraphText);
+                            parsedDocument.TimePeriod = AppendParagraph(parsedDocument.TimePeriod, paragraphText);
                             break;
 
                         case 6: // "Abfassungsort:"
-                            parsedDocument.Location = AppendConditionally(parsedDocument.Location, paragraphText);
+                            parsedDocument.Location = AppendParagraph(parsedDocument.Location, paragraphText);
                             break;
 
                         case 7: // "Region:"
@@ -181,11 +197,11 @@ namespace CommandLine
                             break;
 
                         case 8: // "Editionshinweise:"
-                            parsedDocument.EditionInfo = AppendConditionally(parsedDocument.EditionInfo, paragraphText);
+                            parsedDocument.EditionInfo = AppendParagraph(parsedDocument.EditionInfo, paragraphText);
                             break;
 
                         case 9: // "Allgemeines:"
-                            parsedDocument.GeneralInfo = AppendConditionally(parsedDocument.GeneralInfo, paragraphText);
+                            parsedDocument.GeneralInfo = AppendParagraph(parsedDocument.GeneralInfo, paragraphText);
                             break;
 
                         default:
@@ -197,8 +213,188 @@ namespace CommandLine
                 // Current paragraph type could not be recognized
                 else
                 {
-                    throw new Exception("Unexpected paragraph style: '" + paragraphStyle + "'.");
+                    parsedDocument.DebugInfo.ParsingExceptions.Add("Unexpected paragraph type. Content: '" + paragraphText + "'.");
                 }
+
+                currentParagraphCount++;
+            }
+        }
+
+        /// <summary>
+        /// Parses a single source of a document.
+        /// </summary>
+        /// <param name="document">The document to parse.</param>
+        /// <param name="parsedDocument">The object in which the parsed data is accumulated.</param>
+        /// <param name="currentParagraphCount">The current parsing position. The document is parsed by paragraphs.</param>
+        /// <param name="totalParagraphCount">The total number of paragraphs in the document.</param>
+        /// <returns></returns>
+        private static void ParseSingleSource(ref Document document, ref ParsedDocument parsedDocument,
+                                             ref int currentParagraphCount, int totalParagraphCount)
+        {
+            // Keep track of the headline we expect to encounter next
+            // Accesses elements of ParsingInfo.GeneralInfoHeadlines
+            // The bool is set to true if the current encountered headline matches our expectations based on the document guidelines.
+            int currentHeadlineCount = -1;
+            bool currentHeadlineMatchesExpectations = false;
+
+            Source source = new Source();
+            parsedDocument.Sources.Add(source);
+
+            // Iterate over all paragraphs of the document.
+            // This loop is exited when all general document info has been parsed, causing the function to exit.
+            // Afterwards the individual sources can be parsed.
+            for (int i = currentParagraphCount; i <= totalParagraphCount; i++)
+            {
+
+                Paragraph currentParagraph = document.Paragraphs[i];
+
+                if (currentParagraph == null)
+                {
+                    throw new Exception("Error while parsing document ");
+                }
+
+                //string paragraphStyle = (string)currentParagraph.get_Style().NameLocal;
+                string paragraphText = document.Content.Paragraphs[i].Range.Text;
+
+                if(String.IsNullOrEmpty(paragraphText.Trim()))
+                {
+                    currentParagraphCount++;
+                    continue;
+                }
+
+                // Used to distinguish between headlines and text bodies
+                int bold = currentParagraph.Range.Bold;
+                WdUnderline underline = currentParagraph.Range.Underline;
+
+                if(!String.IsNullOrEmpty(source.IDString))
+                {
+                    if(underline != WdUnderline.wdUnderlineNone && bold == -1)
+                    {
+                        return;
+                    }
+                }
+
+                // Current paragraph is a headline
+                if (bold == -1)
+                {
+                    currentHeadlineCount++;
+                    //if (currentHeadlineCount >= ParsingInfo.SourceHeadlines.Count())
+                    //{
+                    //    if (currentParagraph.Range.Underline != WdUnderline.wdUnderlineNone)
+                    //    {
+                    //        currentParagraphCount++;
+                    //    }
+                    //    return;
+                    //}
+                    currentHeadlineMatchesExpectations = false;
+
+                    if (!paragraphText.Trim().StartsWith(ParsingInfo.SourceHeadlines[currentHeadlineCount]))
+                    {
+                        parsedDocument.DebugInfo.ParsingExceptions.Add("Unexpected start of headline encountered! Found headline: '" +
+                                            paragraphText +
+                                            "', expected start: '" +
+                                            ParsingInfo.SourceHeadlines[currentHeadlineCount] +
+                                            "'. Paragraph " + currentParagraphCount);
+
+                        // Try to recover by peeking inside the next paragraph
+                        if (document.Paragraphs[currentParagraphCount + 1].Range.Text.StartsWith(ParsingInfo.SourceHeadlines[currentHeadlineCount]))
+                        {
+                            currentParagraphCount++;
+                            currentHeadlineCount--;
+                            parsedDocument.DebugInfo.ParsingExceptions.RemoveAt(parsedDocument.DebugInfo.ParsingExceptions.Count-1);
+                            continue;
+                        }
+                    }
+
+                    // The first headline actually contains content so we need to handle it here
+                    else if (currentHeadlineCount == 0)
+                    {
+                        source.IDString = paragraphText.Substring(paragraphText.LastIndexOf('[')).Trim();
+                    }
+
+
+                    else
+                    {
+                        currentHeadlineMatchesExpectations = true;
+                    }
+                }
+
+                // Current paragraph is a text body
+                else if (bold == 0)
+                {
+                    if (!currentHeadlineMatchesExpectations)
+                    {
+                        continue;
+                    }
+
+                    // Add the content of the current paragraph to the correct property of the parsedDocument
+                    switch (currentHeadlineCount)
+                    {
+                        case 1: // "Zitation:"
+                            source.Citation = AppendParagraph(source.Citation, paragraphText);
+                            break;
+
+                        case 2: // "zeitliche (Quellen-)Angabe:"
+                            source.SourceTime = AppendParagraph(source.SourceTime, paragraphText);
+                            break;
+
+                        case 3: // "Inhaltsangabe:"
+                            source.Summary = AppendParagraph(source.Summary, paragraphText);
+                            break;
+
+                        case 4: // "Volltext:"
+                            source.TextOriginal = AppendParagraph(source.TextOriginal, paragraphText);
+                            break;
+
+                        case 5: // "Übersetzung:"
+                            source.TextTranslated = AppendParagraph(source.TextTranslated, paragraphText);
+                            break;
+
+                        case 6: // "Hinweise zur Übersetzung (Zitation):"
+                            source.TranslationInfo = AppendParagraph(source.TranslationInfo, paragraphText);
+                            break;
+
+                        case 7: // "zeitliche (wissenschaftliche) Einordnung:"
+                            source.EstimatedActualTime = AppendParagraph(source.EstimatedActualTime, paragraphText);
+                            break;
+
+                        case 8: // "geographisches Stichwort:"
+                            source.GeographicKeywords = GetStringListFromSeperatedString(paragraphText, ';');
+                            break;
+
+                        case 9: // "Bericht über ein/mehrere Individuum/en oder Kollektive:"
+                            source.ParticipantKeywords = GetStringListFromSeperatedString(paragraphText, ';');
+                            break;
+
+                        case 10: // "Interaktion (j/n):"
+                            source.Interaction = AppendParagraph(source.Interaction, paragraphText);
+                            break;
+
+                        case 11: // "Auffälligkeiten:"
+                            source.DistinctiveFeatures = GetStringListFromSeperatedString(paragraphText, ';');
+                            break;
+
+                        case 12: // "Suchbegriffe der Stelle (mit Semikolon trennen):"
+                            source.SearchKeywords = GetStringListFromSeperatedString(paragraphText, ';');
+                            break;
+
+                        case 13: // "Anmerkungen:"
+                            source.Notes = AppendParagraph(source.Notes, paragraphText);
+                            break;
+
+                        default:
+                            throw new Exception("Error: Trying to access unknown headline case. If you read this the writer of this software possibly made an off-by-one error.");
+                            break;
+                    }
+                }
+
+                // Current paragraph type could not be recognized
+                else
+                {
+                    parsedDocument.DebugInfo.ParsingExceptions.Add("Unexpected paragraph type. Content: '" + paragraphText + "'.");
+                }
+
+                currentParagraphCount++;
             }
         }
 
@@ -229,7 +425,7 @@ namespace CommandLine
         /// <param name="original">The string to be extended</param>
         /// <param name="toAppend">The string to append</param>
         /// <returns></returns>
-        private static string AppendConditionally(string original, string toAppend)
+        private static string AppendParagraph(string original, string toAppend)
         {
             if(string.IsNullOrWhiteSpace(toAppend))
                 return original.Trim();

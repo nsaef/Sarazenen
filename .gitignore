@@ -214,3 +214,10 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+*.docx
+Quellen/0036-Annales Alamannici_bearb..doc
+*.xml
+*.zip
+*.css
+Sarazenen-Sarazenen_refactor/SarazenenParser/SarazenenParser.sln
+*.xlsx

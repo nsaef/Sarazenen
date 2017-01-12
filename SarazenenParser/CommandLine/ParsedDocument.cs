@@ -236,6 +236,7 @@ namespace CommandLine
         /// <summary>
         /// Auffälligkeiten:
         /// </summary>
+        [XmlArray("Auffaelligkeiten")]
         [XmlArrayItem(typeof(string), ElementName = "Schlagwort")]
         public List<string> DistinctiveFeatures { get; set; }
 

@@ -344,10 +344,12 @@ namespace CommandLine
 
                         case 4: // "Volltext:"
                             source.TextOriginal = AppendParagraph(source.TextOriginal, paragraphText);
+                            source.Entities = FindAnnotations(source.TextOriginal);
                             break;
-
                         case 5: // "Übersetzung:"
                             source.TextTranslated = AppendParagraph(source.TextTranslated, paragraphText);
+                            List<string> annotations = FindAnnotations(source.TextTranslated);
+                            source.Entities = source.Entities.Union(annotations).ToList();
                             break;
 
                         case 6: // "Hinweise zur Übersetzung (Zitation):"
@@ -434,6 +436,28 @@ namespace CommandLine
                 return toAppend.Trim();
 
             return (original + "\n" + toAppend).Trim();
+        }
+
+        private static List<String> FindAnnotations(string text) {
+
+            List<string> annotations = new List<string>();
+            int index = 0;
+
+            List<string> stopwords = new List<string> { "…", "..." };
+
+            while (text.IndexOf("[", index) != -1) {
+                int start = text.IndexOf("[", index) + 1;
+                int end = text.IndexOf("]", index);
+                string annotation = text.Substring(start, (end - start));
+                
+                if (!annotations.Contains(annotation) && !stopwords.Contains(annotation)) {
+                    annotations.Add(annotation);
+                }
+                
+                index = end+1;
+            }
+
+            return annotations;
         }
 
     }

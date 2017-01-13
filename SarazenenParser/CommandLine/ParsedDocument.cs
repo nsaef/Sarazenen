@@ -252,6 +252,13 @@ namespace CommandLine
         /// </summary>
         [XmlElement(ElementName = "Anmerkungen")]
         public string Notes { get; set; }
+
+        /// <summary>
+        /// Entitäten
+        /// </summary>
+        [XmlArray("Entitaeten")]
+        [XmlArrayItem(typeof(string), ElementName = "Entitaet")]
+        public List<string> Entities { get; set; }
     }
 
     /// <summary>

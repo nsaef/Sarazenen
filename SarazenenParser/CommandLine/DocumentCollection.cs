@@ -12,15 +12,16 @@ namespace CommandLine {
     public class DocumentCollection {
         public DocumentCollection() {
             Documents = new List<ParsedDocument>();
-            SourceDesc sourceDesc = new SourceDesc("Beschreibender Text");
-            FileDesc fileDesc = new FileDesc("Sarazenen", "Literatursammlung zu Sarazenen der Bonner Mediaevisten", sourceDesc);
-            header = new TeiHeader(fileDesc);
+            //SourceDesc sourceDesc = new SourceDesc("Beschreibender Text");
+            //FileDesc fileDesc = new FileDesc("Sarazenen", "Literatursammlung zu Sarazenen der Bonner Mediaevisten", sourceDesc);
+            //header = new TeiHeader(fileDesc);
         }
 
-        [XmlElement(ElementName = "teiHeader")]
-        public TeiHeader header { get; set; }
+        //[XmlElement(ElementName = "teiHeader")]
+        //public TeiHeader header { get; set; }
 
-        [XmlElement(ElementName = "teiCorpus", Namespace = "http://www.tei-c.org/ns/1.0")]
+        //[XmlElement(ElementName = "teiCorpus", Namespace = "http://www.tei-c.org/ns/1.0")]
+        [XmlElement(ElementName = "Dokumente")]
         public List<ParsedDocument> Documents { get; set; }
     }
 }

@@ -7,21 +7,70 @@ using System.Xml;
 using System.Xml.Serialization;
 
 namespace CommandLine {
-
+    /// <summary>
+    /// Container element for all documents
+    /// </summary>
     [XmlRootAttribute("teiCorpus", Namespace = "http://www.tei-c.org/ns/1.0", IsNullable = false)]
     public class DocumentCollection {
         public DocumentCollection() {
+            Persons = new List<Person>();
+            Places = new List<Place>();
             Documents = new List<ParsedDocument>();
-            //SourceDesc sourceDesc = new SourceDesc("Beschreibender Text");
-            //FileDesc fileDesc = new FileDesc("Sarazenen", "Literatursammlung zu Sarazenen der Bonner Mediaevisten", sourceDesc);
-            //header = new TeiHeader(fileDesc);
         }
 
-        //[XmlElement(ElementName = "teiHeader")]
-        //public TeiHeader header { get; set; }
+        [XmlElement(ElementName = "Personen")]
+        public List<Person> Persons { get; set; }
 
-        //[XmlElement(ElementName = "teiCorpus", Namespace = "http://www.tei-c.org/ns/1.0")]
+        [XmlElement(ElementName = "Orte")]
+        public List<Place> Places { get; set; }
+
         [XmlElement(ElementName = "Dokumente")]
-        public List<ParsedDocument> Documents { get; set; }
+        public List<ParsedDocument> Documents { get; set; }       
     }
+
+
+    /// <summary>
+    /// Helper class for central person registry
+    /// </summary>
+    public class Person {
+
+        public Person() {
+            Id = Guid.NewGuid();
+            AltNames = new List<string>();
+        }
+
+        public Guid Id { get; set; }
+
+        public string Name { get; set; }
+
+        [XmlElement(ElementName = "Rolle")]
+        public string Role { get; set; }
+
+        [XmlArray("Alternativnamen")]
+        [XmlArrayItem(typeof(string), ElementName = "Name")]
+        public List<string> AltNames { get; set; }
+    }
+
+    /// <summary>
+    /// Helper class for central place registry
+    /// </summary>
+    public class Place {
+
+        public Place() {
+            Id = Guid.NewGuid();
+            AltNames = new List<string>();
+        }
+
+        public Guid Id { get; set; }
+
+        public string Name { get; set; }
+
+        [XmlElement(ElementName = "Typ")]
+        public string Type { get; set; }
+
+        [XmlArray("Alternativnamen")]
+        [XmlArrayItem(typeof(string), ElementName = "Name")]
+        public List<string> AltNames { get; set; }
+    }
+
 }

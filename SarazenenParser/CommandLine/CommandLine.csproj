@@ -60,6 +60,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CsvParser.cs" />
+    <Compile Include="CsvRow.cs" />
     <Compile Include="DocumentCollection.cs" />
     <Compile Include="ParsedDocument.cs" />
     <Compile Include="Parser.cs" />

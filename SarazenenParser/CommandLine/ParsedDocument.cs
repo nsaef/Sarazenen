@@ -256,9 +256,23 @@ namespace CommandLine
         /// <summary>
         /// Entitäten
         /// </summary>
+        /// 
         [XmlArray("Entitaeten")]
-        [XmlArrayItem(typeof(string), ElementName = "Entitaet")]
-        public List<string> Entities { get; set; }
+        [XmlArrayItem(typeof(Entity), ElementName = "Entitaet")]
+        public List<Entity> Entities { get; set; }
+    }
+
+    public class Entity {
+        public Entity() {
+        }
+        
+        [XmlAttribute]
+        public Guid Id { get; set; }
+
+        [XmlAttribute]
+        public string Type { get; set; }
+
+        public string Name { get; set; }
     }
 
     /// <summary>

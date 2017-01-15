@@ -14,7 +14,7 @@ namespace CommandLine
     public static class Parser
     {
 
-        public static ParsedDocument ParseDocument(string filePath)
+        public static ParsedDocument ParseDocument(string filePath, DocumentCollection parent)
         {
             // Where the parsed data is saved. This is also the return value.
             ParsedDocument parsedDocument = new ParsedDocument();
@@ -43,7 +43,7 @@ namespace CommandLine
                         ParseGeneralInfo(ref document, ref parsedDocument, ref currentParagraphCount, totalParagraphCount);
                         while (currentParagraphCount < totalParagraphCount)
                         {
-                            ParseSingleSource(ref document, ref parsedDocument, ref currentParagraphCount, totalParagraphCount);
+                            ParseSingleSource(ref document, ref parsedDocument, ref currentParagraphCount, totalParagraphCount, parent);
                             if (string.IsNullOrEmpty(parsedDocument.Sources.Last().IDString))
                             {
                                 parsedDocument.Sources.Remove(parsedDocument.Sources.Last());
@@ -147,7 +147,7 @@ namespace CommandLine
                     // The first headline actually contains content so we need to handle it here
                     else if (currentHeadlineCount == 0)
                     {
-                        parsedDocument.IDString = paragraphText.Substring(paragraphText.LastIndexOf('[')).Trim();
+                        parsedDocument.IDString = paragraphText.Substring(paragraphText.LastIndexOf('[')).Trim().Trim('[').Trim(']');
                     }
 
 
@@ -229,8 +229,12 @@ namespace CommandLine
         /// <param name="totalParagraphCount">The total number of paragraphs in the document.</param>
         /// <returns></returns>
         private static void ParseSingleSource(ref Document document, ref ParsedDocument parsedDocument,
-                                             ref int currentParagraphCount, int totalParagraphCount)
+                                             ref int currentParagraphCount, int totalParagraphCount, DocumentCollection parent)
         {
+
+            // container for annotations
+            List<Entity> annotations = new List<Entity>();
+
             // Keep track of the headline we expect to encounter next
             // Accesses elements of ParsingInfo.GeneralInfoHeadlines
             // The bool is set to true if the current encountered headline matches our expectations based on the document guidelines.
@@ -309,7 +313,7 @@ namespace CommandLine
                     // The first headline actually contains content so we need to handle it here
                     else if (currentHeadlineCount == 0)
                     {
-                        source.IDString = paragraphText.Substring(paragraphText.LastIndexOf('[')).Trim();
+                        source.IDString = paragraphText.Substring(paragraphText.LastIndexOf('[')).Trim().Trim('[').Trim(']');
                     }
 
 
@@ -344,12 +348,14 @@ namespace CommandLine
 
                         case 4: // "Volltext:"
                             source.TextOriginal = AppendParagraph(source.TextOriginal, paragraphText);
-                            source.Entities = FindAnnotations(source.TextOriginal);
+                            annotations = FindAnnotations(annotations, source.TextOriginal, parent);
+                            source.Entities = annotations;
                             break;
+
                         case 5: // "Übersetzung:"
                             source.TextTranslated = AppendParagraph(source.TextTranslated, paragraphText);
-                            List<string> annotations = FindAnnotations(source.TextTranslated);
-                            source.Entities = source.Entities.Union(annotations).ToList();
+                            annotations = FindAnnotations(annotations, source.TextTranslated, parent);
+                            source.Entities = annotations;
                             break;
 
                         case 6: // "Hinweise zur Übersetzung (Zitation):"
@@ -438,22 +444,56 @@ namespace CommandLine
             return (original + "\n" + toAppend).Trim();
         }
 
-        private static List<String> FindAnnotations(string text) {
-
-            List<string> annotations = new List<string>();
+        private static List<Entity> FindAnnotations(List<Entity> annotations, string text, DocumentCollection parent) {
+            //List<Entity> annotations = new List<Entity>();
             int index = 0;
 
             List<string> stopwords = new List<string> { "…", "..." };
 
             while (text.IndexOf("[", index) != -1) {
+                Entity entity = new Entity();
                 int start = text.IndexOf("[", index) + 1;
                 int end = text.IndexOf("]", index);
                 string annotation = text.Substring(start, (end - start));
+                bool entityExists = false;
                 
-                if (!annotations.Contains(annotation) && !stopwords.Contains(annotation)) {
-                    annotations.Add(annotation);
+                foreach (var e in annotations) {
+                    if (e.Name == annotation) {
+                        entityExists = true;
+                    }
                 }
-                
+
+                if (!entityExists == true && !stopwords.Contains(annotation)) {
+                    entity.Name = annotation;
+
+                    //get person and place register
+                    foreach (var person in parent.Persons) {
+                        if (person.Name == entity.Name) {
+                            entity.Type = "Person";
+                            entity.Id = person.Id;
+                            break;
+                        }
+                        
+                    }
+
+                    if (entity.Type == null) {
+                        foreach (var place in parent.Places) {
+                            if (place.Name == entity.Name) {
+                                entity.Type = "Ort";
+                                entity.Id = place.Id;
+                                break;
+                            }
+                            
+                        }
+                    }
+
+                    if (entity.Type == null) {
+                        entity.Type = "Anmerkung";
+                        entity.Id = Guid.NewGuid();
+                    }
+
+                    annotations.Add(entity);
+                }
                 index = end+1;
             }
 

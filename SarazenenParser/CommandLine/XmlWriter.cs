@@ -27,6 +27,19 @@ namespace CommandLine {
             serializer.Serialize(writer, docs);
 
             writer.Close();
+
+            foreach (var doc in docs.Documents) {
+                XmlSerializer serializerSeparateFiles = new XmlSerializer(typeof(ParsedDocument));
+                try {
+                    TextWriter writerSeparateFiles = new StreamWriter(@"C:\Users\Amin\Documents\GitHub\sarazenen\Quellen\Auszug\XML\Files\" + doc.Title + ".xml");
+                    serializerSeparateFiles.Serialize(writerSeparateFiles, doc);
+
+                    writerSeparateFiles.Close();
+                }
+                catch (Exception e) {
+                    throw e;
+                }
+            }
         }
 
     }

@@ -10,7 +10,8 @@ namespace CommandLine {
     /// <summary>
     /// Container element for all documents
     /// </summary>
-    [XmlRootAttribute("teiCorpus", Namespace = "http://www.tei-c.org/ns/1.0", IsNullable = false)]
+    //[XmlRootAttribute("teiCorpus", Namespace = "http://www.tei-c.org/ns/1.0", IsNullable = false)]
+    [XmlRootAttribute("Sarazenen", IsNullable = false)]
     public class DocumentCollection {
         public DocumentCollection() {
             Persons = new List<Person>();

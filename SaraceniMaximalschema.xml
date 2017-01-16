@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- teiCorpus beschreibt ein komplettes Werk (Korpus von TEI-Dokumenten).
+     für jede Quellenstelle wurde ein TEI-Dokument (<TEI></TEI> begrenzt ein Dokument, i.d.R. ist das auch eine ganze Datei) angelegt, 
+     welche hier in zwischen <teiCorpus></teiCorpus> gruppiert sind. -->
+<teiCorpus xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <!-- für eXist / XQuery allgemein: mit @xml:id der fileDesc können Werke oder Quellenstellen angesteuert werden
+      W muss davor stehen, da xml:id nicht mit Zahl beginnen darf, sondern mit NCName (non-colonized name, d.h. Buchstabe)!#
+      hier: W für work oder Werk -->
+      <fileDesc xml:id="W_ZahlencodeDesWerks_TitelDesWerks">
+         <titleStmt>
+            <!-- type=orig für original, sollte ein kanonischer Titel des Werks sein -->
+            <title type="orig" sameAs="orig" xml:lang="lat">lateinischer Titel</title>
+            <!-- alternative Schreibweisen können mit beliebig vielen title type="alt" beschrieben werden -->
+            <title type="alt" sameAs="alt1" xml:lang="lat">Nter alternativer Titel</title>
+            <!-- ihre entsprechende Übersetzung kann mit type="trans" geliefert werden. mit @sameAs können diese zusätzlich verknüpft werden. -->
+            <title type="trans" sameAs="alt1" xml:lang="deu">Nte deutsche Übersetzung</title>
+            <author>
+               <persName type="orig">
+                  <!-- GND ist Platzhalter, vorgesehen ist hier ein Link an ein zentrales Repositorium, wo alle Schreibweisen und 
+                  Übersetzungen aufgeschlüsselt sind -->
+                  <ref target="fallsVorhandenHierLinkZuGND">lateinische Originalschreibweise des
+                     Autorennamens</ref>
+               </persName>
+               <persName type="trans">
+                  <ref target="fallsVorhandenHierLinkZuGND">deutsche Schreibweise des
+                     Autorennamens</ref>
+               </persName>
+               <!-- fehlende Werte mit -00- verschlüsseln, das kann dann im Server entsprechend abgefangen werden -->
+               <date type="lifeDates" from-iso="0000-00-00" to-iso="0000-00-00"/>
+            </author>
+         </titleStmt>
+         <publicationStmt>
+            <p>TBD sobald die Rechte geklärt sind, hier Rücksprache mit K. Gahbler/ Oe. Eide
+                  halten!</p>
+         </publicationStmt>
+         <sourceDesc>
+            <!-- hier die Zitatshinweise, jedes Zitat erhält einen eigenen strukturierten bibliografischen Eintrag (dafür steht <biblStruct>) -->
+            <!-- Beispiel #2 des MGH -->
+            <biblStruct>
+               <!-- Angabe des unselbstständigen Werkes -->
+               <analytic>
+                  <!-- @level="a" steht für "analytic", vgl. TEI-Spezifikation, welche besagt, dass es sich hier um Elemente handelt,
+                  die i n n e r h a l b eines g r ö ß e r e n Werkes veröffentlicht wurden -->
+                  <title level="a">Bonifatius, Epistolae</title>
+               </analytic>
+               <!-- Angabe des Sammelbandes, aus welchem zitiert wird -->
+               <monogr>
+                  <!-- @level="m" steht für "monograph" -->
+                  <title level="m">Monumenta Germainae Histroica Epp. III</title>
+                  <editor>Ernst Dümmler</editor>
+                  <!-- Druck der vorliegenden Ausgabe -->
+                  <imprint>
+                     <pubPlace>Berlin</pubPlace>
+                     <date>1892</date>
+                     <!-- Angabe des Seitenbereiches, aus dem zitiert wurde -->
+                     <!-- @unit gibt die Einheit (Seiten, Bände, etc.), welche hier als Grundlage zum Zitatsumfang dient -->
+                     <biblScope unit="page" from="215" to="483">S. 215-483</biblScope>
+                  </imprint>
+               </monogr>
+            </biblStruct>
+            <!-- Beispiel #1 des Corpus Christianorum -->
+            <biblStruct>
+               <analytic>
+                  <title level="a">Liudprandi Cremonensis Antapodosis</title>
+               </analytic>
+               <monogr>
+                  <title level="m">Liudprandi Cremonensis Opera Omnia</title>
+                  <note>CCCM 156</note>
+                  <!-- CCCM müsste auch aufgeschlüssent werden -->
+                  <edition>Paolo Chiesa</edition>
+                  <imprint>
+                     <pubPlace>Turnhout</pubPlace>
+                     <date>1998</date>
+                     <biblScope unit="page" from="3" to="150">S. 3-150</biblScope>
+                  </imprint>
+               </monogr>
+            </biblStruct>
+            <!-- Beispiel der Patrologia Latina -->
+            <biblStruct>
+               <analytic>
+                  <title level="a">Beda Venerabilis, Super Acta Apostolorum expositio</title>
+               </analytic>
+               <monogr>
+                  <title level="m">Patrologia Latina 92</title>
+                  <editor>Jacques-Paul Migne</editor>
+                  <imprint>
+                     <pubPlace>Paris</pubPlace>
+                     <date>1862</date>
+                     <biblScope unit="column" from="937" to="996">Sp. 937-996</biblScope>
+                  </imprint>
+               </monogr>
+            </biblStruct>
+            <!-- Beispiel der Acta Sanctorum -->
+            <biblStruct>
+               <analytic>
+                  <title level="a">Vita S. Johannis</title>
+               </analytic>
+               <monogr>
+                  <title level="m">Acta Sanctorum</title>
+                  <!-- auch mehrere Herausgeber sind problemlos auszuzeichnen - 
+                     im Original scheinen sie mit Hyphen voneinander getrennt zu sein -->
+                  <editor>Ioannes Bollandus</editor>
+                  <editor>Godefridus Henschenius</editor>
+                  <imprint>
+                     <pubPlace>Paris</pubPlace>
+                     <pubPlace>Rom</pubPlace>
+                     <date>1658</date>
+                     <biblScope unit="volume">Februar 3</biblScope>
+                     <biblScope unit="issue">27. Feb.</biblScope>
+                     <biblScope unit="page" from="695" to="721">S. 695-721</biblScope>
+                  </imprint>
+               </monogr>
+            </biblStruct>
+            <!-- Die sonstigen Zitatsbeispiele -->
+            <biblStruct>
+               <analytic>
+                  <title level="a">Das Leben des hl. Willibald</title>
+               </analytic>
+               <monogr>
+                  <!-- @level="s" steht für "series" und bezeichnet den Sammeltitel -->
+                  <title level="s">Quellen zur Geschichte der Diözese Eichstätt</title>
+                  <title level="m">Biographien der Gründerzeit</title>
+                  <editor>Andreas Bauch</editor>
+                  <imprint>
+                     <biblScope unit="part" n="1">1.</biblScope>
+                     <pubPlace>Regensburg</pubPlace>
+                     <date>1984</date>
+                     <biblScope unit="page" from="11" to="122">S. 11-122</biblScope>
+                  </imprint>
+               </monogr>
+               <monogr>
+                  <!-- @level="j" steht für "journal" und bezeichnet den Titel der Zeitschrift oder des regelmäßig erscheinenden Werkes -->
+                  <title level="j">Eichstätter Studien</title>
+                  <title level="s">Neue Studien</title>
+                  <imprint>
+                     <biblScope unit="issue" n="19">19</biblScope>
+                  </imprint>
+               </monogr>
+            </biblStruct>
+            <biblStruct>
+               <monogr>
+                  <title level="m">La Vie de Jean, Abbé de Gorze</title>
+                  <author>Jean de Saint-Arnoul</author>
+                  <editor>Michel Parisse</editor>
+                  <imprint>
+                     <pubPlace>Paris</pubPlace>
+                     <date>1999</date>
+                  </imprint>
+               </monogr>
+            </biblStruct>
+            <biblStruct>
+               <analytic>
+                  <title level="a">Etymologiae sive Originum</title>
+                  <title level="s">Libri XX</title>
+                  <author>Isidor von Sevilla</author>
+                  <editor>Wallace M. Lindsay</editor>
+               </analytic>
+               <monogr>
+                  <title level="m">Scriptorum Classicorum Bibliotheca Oxoniensis</title>
+                  <imprint>
+                     <pubPlace>Oxford</pubPlace>
+                     <date>1911</date>
+                  </imprint>
+               </monogr>
+            </biblStruct>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            Hier die Notizen unter "Allgemeines"
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <!-- wie oben beschrieben: jede Quellenstelle erhält ein eigenes komplettes TEI-Element.
+   Ab hier beginnen die Angaben zu den einzelnen Quellenstellen. -->
+   <TEI xmlns="http://www.tei-c.org/ns/1.0">
+      <teiHeader>
+         <!-- Q für Quelle, auch hier muss xml:id mit einem Buchstaben beginnen -->
+         <fileDesc xml:id="Q_ZahlencodeDerQuellenstelle_TitelDesWerks_ZahlencodeDesWerks">
+            <titleStmt>
+               <title>Quellenstelle ZahlencodeDerQuellenstelle</title>
+            </titleStmt>
+            <publicationStmt>
+               <p>TBD sobald die Rechte geklärt sind, hier Rücksprache mit K. Gahbler/ Oe. Eide
+                  halten!</p>
+            </publicationStmt>
+            <sourceDesc>
+               <!-- Zitation der Originalstelle -->
+               <biblStruct type="origCit">
+                  <analytic>
+                     <title level="a">Annales regni Francorum</title>
+                     <title level="s">a. 798</title>
+                  </analytic>
+                  <monogr>
+                     <title level="m">MGH SS rer. Germ.</title>
+                     <editor>Friedrich Kurze</editor>
+                     <imprint>
+                        <pubPlace>Hannover</pubPlace>
+                        <date notBefore-iso="1895-01-01" notAfter-iso="1895-12-31">1895</date>
+                        <biblScope unit="page" from="104" to="104">S. 104</biblScope>
+                        <biblScope unit="volume" n="6">[6]</biblScope>
+                     </imprint>
+                  </monogr>
+               </biblStruct>
+               <!-- Zitation der Übersetzung -->
+               <biblStruct type="transCit">
+                  <analytic>
+                     <author>Liudprand von Cremona</author>
+                     <title level="a">Das Buch der Vergeltung XY</title>
+                  </analytic>
+                  <analytic>
+                     <title level="a">
+                        Quellen zur Geschichte der sächsischen Kaiserzeit. Widukinds Sachsengeschichte. Adalberts Fortsetzung der Chronik Reginos.
+                        Liudprands Werke
+                     </title>
+                     <editor>Albert Bauer</editor>
+                     <editor>Reinhold Rau</editor>
+                  </analytic>
+                  <monogr>
+                     <title level="m">Ausgewählte Quellen zur deutschen Geschichte des Mittelalters. Freiherr von Stein-Gedächtnisausgabe</title>
+                     <imprint>
+                        <pubPlace>Darmstadt</pubPlace>
+                        <date>2002</date>
+                        <!-- mit corresp gebe ich hier die Werksebene an, auf das sich die Begrenzung bezieht:
+                        @corresp="monogr" -> Sammelband
+                        @corresp="analytic" -> unselbstständiges Werk -->
+                        <biblScope corresp="monogr" unit="issue" n="8">8</biblScope>
+                        <biblScope corresp="monogr" unit="page" from="XY" to="XY">S. XY</biblScope>
+                     </imprint>
+                  </monogr>
+               </biblStruct>
+               <msDesc>
+                  <msIdentifier>
+                     <region>Region: West- und Mitteleuropa, West- und Mitteleuropa – Westfrankenreich,
+                        West- und Mitteleuropa – Ostfrankenreich, Italien, Britische Inseln, Iberische
+                        Halbinsel, Skandinavien</region>
+                     <settlement>Abfassungsort (modern)</settlement>
+                     <idno>Zahlencode des Werks</idno>
+                  </msIdentifier>
+                  <history>
+                     <origin>
+                        <origDate type="source" notBefore-iso="0000-00-00" notAfter-iso="0000-00-00">
+                           (Quellen-)Einordnung: genaue Jahresangabe (n. Chr.), z.B. '843' oder Zeitraum, z.B. 9.-10. Jahrhundert
+                        </origDate>
+                        <origDate type="scientific" notBefore-iso="0000-00-00" notAfter-iso="0000-00-00">
+                           (wissenschaftliche) Einordnung: genaue Jahresangabe (n. Chr.), z.B. '843' oder Zeitraum, z.B. 9.-10. Jahrhundert
+                        </origDate>
+                     </origin>
+                  </history>
+               </msDesc>
+            </sourceDesc>
+         </fileDesc>
+         <profileDesc>
+            <abstract>
+               <p>
+                  Zusammenfassung
+               </p>
+               <list>
+                  <item>Auffälligkeiten</item>
+                  <item>in Stichpunkten</item>                  
+               </list>
+            </abstract>
+            <!-- zweckentfremdet; eigentlich sollen hier Informationen zur Entstehung des Textes genannt werden -->
+            <creation>
+               Anmerkungen aus der Edition
+            </creation>
+            <!-- hier die geografischen Stichworte: -->
+            <settingDesc>
+               <listPlace>
+                  <place>
+                     <placeName>Ortsname</placeName>
+                  </place>
+               </listPlace>
+            </settingDesc>
+            <!-- hier die Berichte: ein <person> für jedes Individuum und eine <personGrp> für jedes Kollektivum. -->
+            <particDesc>
+               <listPerson>
+                  <person role="a"/> <!-- anderes Individuum; ersetzt aI -->
+                  <personGrp role="s"/> <!-- sarazenisches Kollektiv; ersetzt sK -->
+               </listPerson>
+            </particDesc>
+            <!-- hier die Suchbegriffe zur Quellenstelle -->
+            <textClass>
+               <keywords>
+                  <term>Suchbegriff der Stelle</term>
+                  <term>Noch ein Suchbegriff</term>
+               </keywords>
+            </textClass>
+            <!-- hier zusätzliche Informationen zum Quellmaterial selbst, hier kann auch die Interaktion angegeben werden -->
+            <textDesc>
+               <channel>geschriebener Text</channel>
+               <constitution>fragmentarisch oder komplett?</constitution>
+               <derivation>original</derivation>
+               <domain>Zielgruppe(n) der Quelle</domain>
+               <factuality>fiktional: ja oder nein?</factuality>
+               <interaction>Interaktion: ja oder nein?</interaction>
+               <preparedness>vorbereitet: ja oder nein?</preparedness>
+               <purpose>Intention des Textes</purpose>
+            </textDesc>
+         </profileDesc>
+      </teiHeader>
+      <text>
+         <!-- ab hier der eigentliche Text -->
+         <body>
+            <div corresp="#ZahlencodeDerQuellenstelle">
+               <p n="fulltext" xml:lang="lat">
+                  orinigaler lateinischer Text
+               </p>
+               <p n="translation" xml:lang="de">
+                  übersetzter deutscher Text
+               </p>
+            </div>
+         </body>
+      </text>
+   </TEI>
+</teiCorpus>

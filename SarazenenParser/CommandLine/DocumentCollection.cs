@@ -19,10 +19,12 @@ namespace CommandLine {
             Documents = new List<ParsedDocument>();
         }
 
-        [XmlElement(ElementName = "Personen")]
+        [XmlArray("Personen")]
+        [XmlArrayItem(typeof(Person), ElementName = "Person")]
         public List<Person> Persons { get; set; }
 
-        [XmlElement(ElementName = "Orte")]
+        [XmlArray("Orte")]
+        [XmlArrayItem(typeof(Place), ElementName = "Ort")]
         public List<Place> Places { get; set; }
 
         [XmlElement(ElementName = "Dokumente")]
